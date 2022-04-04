@@ -1,0 +1,1 @@
+C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Wurklist.csproj;x64

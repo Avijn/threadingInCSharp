@@ -119,13 +119,17 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataBase\DBCalls.cs" />
     <Compile Include="General\User.cs" />
     <Compile Include="Kanban\KanbanBoard.cs" />
     <Compile Include="Kanban\KanbanItem.cs" />
     <Compile Include="Kanban\KanbanProject.cs" />
+    <Compile Include="login\Login.cs" />
+    <Compile Include="login\Register.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +160,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.10</Version>
+    </PackageReference>
+    <PackageReference Include="NPoco">
+      <Version>5.3.2</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
       <Version>5.0.0.2337</Version>
