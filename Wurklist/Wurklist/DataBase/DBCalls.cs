@@ -1,6 +1,8 @@
-﻿using NPoco;
+﻿using MySql.Data.MySqlClient;
+using NPoco;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
@@ -11,21 +13,32 @@ namespace Wurklist.DataBase
 {
     internal class DBCalls
     {
-        IDatabase db;
+        string connectionString;
+        MySqlConnection conn;
+        MySqlCommand cmd;
 
         public DBCalls()
         {
-            //conn.ConnectionString = "Server=10.110.110.121;Database=Wurklist;user Id=arjan; Password=YecGaa";
+            connectionString = @"server=10.110.110.121;database=Wurklist;user id=arjan;password=YecGaa";
         }
 
         ////
         /// Select statements
         ////
 
-        public List<CustomTask> getCustomTasksUser(int id)
+        public void getCustomTasksUser(int id)
         {
-            return db.Fetch<CustomTask>("Where UserId=" + id);
-            
+            string sql = @"SELECT * FROM Task";
+            conn = new MySqlConnection(connectionString);
+            cmd = new MySqlCommand(sql, conn);
+            conn.Open();
+            DataTable dataTable = new DataTable();
+
+            using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
+            {
+                da.Fill(dataTable);
+            }
+            conn.Close();
         }
 
 

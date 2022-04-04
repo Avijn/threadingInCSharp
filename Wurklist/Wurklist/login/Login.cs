@@ -25,8 +25,8 @@ namespace Wurklist.login
             byte[] data = System.Text.Encoding.ASCII.GetBytes(user.Password);
             data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
             String hash = System.Text.Encoding.ASCII.GetString(data);
-
-            List<CustomTask> customstasks = _dbcalls.getCustomTasksUser(1);
+            _dbcalls.getCustomTasksUser(1);
+            //List<CustomTask> customstasks = _dbcalls.getCustomTasksUser(1);
 
             return true;
         }
