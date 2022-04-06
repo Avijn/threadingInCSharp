@@ -12,9 +12,9 @@ namespace Wurklist.General
         public string Name { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
 
-        public User(string name, string password, string email, DateTime dateOfBirth)
+        public User(string name, string password, string email, string dateOfBirth)
         {
             Name = name;
             Password = password;

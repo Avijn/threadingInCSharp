@@ -1,12 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
-using NPoco;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Wurklist.General;
 using Wurklist.Models;
 
@@ -47,7 +41,8 @@ namespace Wurklist.DataBase
                 cmd.Prepare();
 
                 MySqlDataReader result = cmd.ExecuteReader();
-                while (result.HasRows)
+
+                while (result.Read())
                 {
                     customTasks.Add(new CustomTask(
                         result.GetString("Name"),
@@ -58,7 +53,7 @@ namespace Wurklist.DataBase
                         result.GetInt16("UserId"),
                         result.GetInt16("Priority")
                     ));
-                    result.NextResult();
+
                 }
                 conn.Close();
                 return customTasks;
@@ -86,16 +81,26 @@ namespace Wurklist.DataBase
             }
         }
 
-        public void CheckLogin(User user)
+        public bool CheckLogin(User user)
         {
             try
             {
-                string sql = @"SELECT Username, Password FROM User WHERE Username = @Username";
+                //string sql = @"SELECT Username, Password FROM User WHERE Username = @Username AND Password = @Password";
+                string sql = @"SELECT name, password FROM user WHERE name = @Username AND password = @Password;";
+                conn.Open();
                 cmd = new MySqlCommand(sql, conn);
-                cmd.Prepare();
                 cmd.Parameters.AddWithValue("@Username", user.Name);
+                cmd.Parameters.AddWithValue("@Password", user.Password);
+                cmd.Prepare();
 
-                var result = cmd.ExecuteReaderAsync();
+                MySqlDataReader result = cmd.ExecuteReader();
+                if(result.HasRows)
+                {
+                    conn.Close();
+                    return true;
+                }
+                conn.Close();
+                return false;
             }
             catch (Exception e)
             {
@@ -125,6 +130,33 @@ namespace Wurklist.DataBase
         /// Insert statements
         ////
 
+        public bool InsertUser(User user)
+        {
+            try
+            {
+                //string sql = @"INSERT INTO user (`Name`, `Password`, `Email`, `DateOfBirth`) VALUES (@name, @Password, @Email, @Dateofbirth);";
+                string sql = @"INSERT INTO user (`Name`, `Password`, `Email`, `DateOfBirth`) VALUES (@name, @Password, @Email, @DateOfBirth);";
+
+                conn.Open();
+                cmd = new MySqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("@name", user.Name);
+                cmd.Parameters.AddWithValue("@Password", user.Password);
+                cmd.Parameters.AddWithValue("@Email", user.Email);
+                cmd.Parameters.AddWithValue("@DateOfBirth", user.DateOfBirth);
+
+                cmd.Prepare();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+              
+        }
 
         ////
         /// Update statements

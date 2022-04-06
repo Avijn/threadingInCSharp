@@ -43,9 +43,6 @@
     <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\k4os.hash.xxhash\1.0.6\lib\netstandard2.0\K4os.Hash.xxHash.dll">
       <PackagePath>K4os.Hash.xxHash.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\microsoft.bcl.asyncinterfaces\1.1.1\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll">
-      <PackagePath>Microsoft.Bcl.AsyncInterfaces.dll</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\mysql.data\8.0.28\lib\netstandard2.0\MySql.Data.dll">
       <PackagePath>MySql.Data.dll</PackagePath>
     </AppxPackagedFile>
@@ -55,17 +52,11 @@
     <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\mysql.data\8.0.28\lib\netstandard2.0\ZstdNet.dll">
       <PackagePath>ZstdNet.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\npoco\5.3.2\lib\netstandard2.0\NPoco.dll">
-      <PackagePath>NPoco.dll</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\runtime.win10-x64.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x64\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\system.configuration.configurationmanager\4.4.1\lib\netstandard2.0\System.Configuration.ConfigurationManager.dll">
       <PackagePath>System.Configuration.ConfigurationManager.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\system.linq.async\5.0.0\lib\netstandard2.0\System.Linq.Async.dll">
-      <PackagePath>System.Linq.Async.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\system.runtime.compilerservices.unsafe\5.0.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll">
       <PackagePath>System.Runtime.CompilerServices.Unsafe.dll</PackagePath>
@@ -100,8 +91,8 @@
     <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\xamarin.forms\5.0.0.2337\lib\uap10.0.16299\Xamarin.Forms.Platform.UAP\Xamarin.Forms.Platform.UAP.xr.xml">
       <PackagePath>Xamarin.Forms.Platform.UAP\Xamarin.Forms.Platform.UAP.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Properties\Default.rd.xml">
-      <PackagePath>Properties\Default.rd.xml</PackagePath>
+    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Assets\Sad_Cat_Thumbs_Up.png">
+      <PackagePath>Assets\Sad_Cat_Thumbs_Up.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -130,11 +121,17 @@
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Wurklist.xr.xml">
       <PackagePath>Wurklist.xr.xml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Kanban\KanbanBoard.xbf">
+      <PackagePath>Kanban\KanbanBoard.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>

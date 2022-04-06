@@ -65,6 +65,13 @@ namespace Wurklist
 
             _login.TryLogin(user);
         }
+        private void button_RegisterButtonClicked(object sender, RoutedEventArgs e)
+        {
+            User user = new User(RegisterUsername.Text, RegisterPassword.Password, RegisterEmail.Text, RegisterDateOfBirth.Text);
+
+            _login.Register(user);
+        }
+
 
         private void GotoKanbanBoard(object sender, RoutedEventArgs e)
         {
