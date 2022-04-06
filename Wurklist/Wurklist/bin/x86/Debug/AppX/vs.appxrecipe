@@ -30,17 +30,33 @@
     <AppXManifest Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-03-28T10:34:52.740</Modified>
+      <Modified>2022-04-04T13:27:11.062</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\Wurklist.exe">
       <PackagePath>entrypoint\Wurklist.exe</PackagePath>
-      <Modified>2022-03-28T10:34:51.934</Modified>
+      <Modified>2022-04-04T13:27:10.207</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Robin\.nuget\packages\microsoft.bcl.asyncinterfaces\1.1.1\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll">
+      <PackagePath>Microsoft.Bcl.AsyncInterfaces.dll</PackagePath>
+      <Modified>2020-04-14T20:38:32.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Robin\.nuget\packages\npoco\5.3.2\lib\netstandard2.0\NPoco.dll">
+      <PackagePath>NPoco.dll</PackagePath>
+      <Modified>2021-12-09T10:56:30.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x86\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
       <Modified>2020-02-27T17:16:04.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Robin\.nuget\packages\system.linq.async\5.0.0\lib\netstandard2.0\System.Linq.Async.dll">
+      <PackagePath>System.Linq.Async.dll</PackagePath>
+      <Modified>2020-11-10T14:53:32.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Robin\.nuget\packages\system.runtime.compilerservices.unsafe\4.5.3\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll">
+      <PackagePath>System.Runtime.CompilerServices.Unsafe.dll</PackagePath>
+      <Modified>2020-02-19T09:05:16.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Robin\.nuget\packages\win2d.uwp\1.20.0\runtimes\win10-x86\native\Microsoft.Graphics.Canvas.dll">
       <PackagePath>Microsoft.Graphics.Canvas.dll</PackagePath>
@@ -74,9 +90,9 @@
       <PackagePath>Xamarin.Forms.Platform.UAP\Xamarin.Forms.Platform.UAP.xr.xml</PackagePath>
       <Modified>2022-01-18T08:16:30.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\Properties\Default.rd.xml">
-      <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2022-03-28T09:25:18.208</Modified>
+    <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\Assets\Sad_Cat_Thumbs_Up.png">
+      <PackagePath>Assets\Sad_Cat_Thumbs_Up.png</PackagePath>
+      <Modified>2022-04-04T13:04:43.649</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -112,17 +128,25 @@
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-08-26T13:23:08.188</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
+      <Modified>2022-03-28T09:25:18.208</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\Wurklist.xr.xml">
       <PackagePath>Wurklist.xr.xml</PackagePath>
-      <Modified>2022-03-28T09:25:59.990</Modified>
+      <Modified>2022-04-04T13:27:10.070</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2022-03-28T10:34:51.620</Modified>
+      <Modified>2022-04-04T13:27:10.075</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\Kanban\KanbanBoard.xbf">
+      <PackagePath>Kanban\KanbanBoard.xbf</PackagePath>
+      <Modified>2022-04-04T13:27:10.075</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2022-03-28T10:34:51.620</Modified>
+      <Modified>2022-04-04T13:27:10.075</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.19041.0\\redist\Debug\x86\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -138,11 +162,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2022-03-28T09:35:11.699</Modified>
+      <Modified>2022-04-04T13:27:10.370</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\Core\Wurklist.exe">
       <PackagePath>Wurklist.exe</PackagePath>
-      <Modified>2022-03-28T10:34:52.737</Modified>
+      <Modified>2022-04-04T13:27:11.059</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

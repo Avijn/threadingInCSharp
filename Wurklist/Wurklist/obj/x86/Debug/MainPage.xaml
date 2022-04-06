@@ -10,23 +10,24 @@
 
     <Grid>
         <StackPanel>
-            <Button Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked"/>
-            <Button Content="Button" Click="GotoKanbanBoard"/>
+            <Button x:ConnectionId='8' Content="Show Popup (using Offset)"                               />
+            <Button x:ConnectionId='9' Content="Button"                        />
         </StackPanel>
-        <Popup VerticalOffset="10" HorizontalOffset="200" x:Name="StandardPopup">
+        <Popup x:ConnectionId='2' VerticalOffset="10" HorizontalOffset="200" x:Name="StandardPopup">
             <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
                 Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
                 BorderThickness="2" Width="200" Height="200">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock Text="Simple Popup" FontSize="24.667" HorizontalAlignment="Center"/>
-                    <Button Content="Close" Click="ClosePopupClicked" HorizontalAlignment="Center"/>
+                    <Button x:ConnectionId='3' Content="Close"                           HorizontalAlignment="Center"/>
                     <TextBlock Text="Login" FontSize="24.667" HorizontalAlignment="Center"/>
-                    <TextBox x:Name="Username"></TextBox>
-                    <PasswordBox x:Name="Password" Width="200" MaxLength="16" PasswordChanged="passwordBox_PasswordChanged"/>
-                    <TextBlock x:Name="statusText" Margin="10" HorizontalAlignment="Center" />
-                    <Button x:Name="Login" Click="button_LoginButtonClicked">Login!</Button>
+                    <TextBox x:ConnectionId='4' x:Name="Username"></TextBox>
+                    <PasswordBox x:ConnectionId='5' x:Name="Password" Width="200" MaxLength="16"                                              />
+                    <TextBlock x:ConnectionId='6' x:Name="statusText" Margin="10" HorizontalAlignment="Center" />
+                    <Button x:ConnectionId='7' x:Name="Login"                                  >Login!</Button>
                 </StackPanel>
             </Border>
         </Popup>
     </Grid>
 </Page>
+

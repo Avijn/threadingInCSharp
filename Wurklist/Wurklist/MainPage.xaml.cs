@@ -23,6 +23,8 @@ namespace Wurklist
     public partial class MainPage : Page
     {
         private login.Login _login;
+        private Kanban.KanbanBoard kanban = new Kanban.KanbanBoard();
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -62,6 +64,11 @@ namespace Wurklist
             User user = new User(Username.Text, Password.Password);
 
             _login.TryLogin(user);
+        }
+
+        private void GotoKanbanBoard(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Kanban.KanbanBoard));
         }
     }
 }

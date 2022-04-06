@@ -121,7 +121,9 @@
     </Compile>
     <Compile Include="DataBase\DBCalls.cs" />
     <Compile Include="General\User.cs" />
-    <Compile Include="Kanban\KanbanBoard.cs" />
+    <Compile Include="Kanban\KanbanBoard.xaml.cs">
+      <DependentUpon>KanbanBoard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Kanban\KanbanItem.cs" />
     <Compile Include="Kanban\KanbanProject.cs" />
     <Compile Include="login\Login.cs" />
@@ -138,6 +140,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Sad_Cat_Thumbs_Up.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -152,6 +155,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Kanban\KanbanBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

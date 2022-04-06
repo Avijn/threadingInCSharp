@@ -55,7 +55,6 @@ C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklis
 C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\Wurklist.build.appxrecipe
 C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\System.Runtime.dll
 C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\Microsoft.UI.Xaml.Markup.winmd
-C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\Wurklist.csprojAssemblyReference.cache
 C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\App.g.i.cs
 C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\App.g.cs
 C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\MainPage.g.i.cs
@@ -114,3 +113,13 @@ C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\Mai
 C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\XamlSaveStateFile.xml
 C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\Wurklist.exe
 C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\Wurklist.pdb
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\NPoco.dll
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\System.Linq.Async.dll
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\Kanban\KanbanBoard.xbf
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\Kanban\KanbanBoard.g.i.cs
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\Kanban\KanbanBoard.g.cs
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\Kanban\KanbanBoard.xaml
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\Kanban\KanbanBoard.xbf
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\Wurklist.csprojAssemblyReference.cache
