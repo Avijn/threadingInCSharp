@@ -13,18 +13,28 @@
             <Button Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked"/>
             <Button Content="Button" Click="GotoKanbanBoard"/>
         </StackPanel>
-        <Popup VerticalOffset="10" HorizontalOffset="200" x:Name="StandardPopup">
+        <Popup VerticalOffset="10" HorizontalOffset="20" x:Name="StandardPopup" Height="500" Width="400">
             <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
                 Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
-                BorderThickness="2" Width="200" Height="200">
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="Simple Popup" FontSize="24.667" HorizontalAlignment="Center"/>
-                    <Button Content="Close" Click="ClosePopupClicked" HorizontalAlignment="Center"/>
-                    <TextBlock Text="Login" FontSize="24.667" HorizontalAlignment="Center"/>
-                    <TextBox x:Name="Username"></TextBox>
-                    <PasswordBox x:Name="Password" Width="200" MaxLength="16" PasswordChanged="passwordBox_PasswordChanged"/>
-                    <TextBlock x:Name="statusText" Margin="10" HorizontalAlignment="Center" />
-                    <Button x:Name="Login" Click="button_LoginButtonClicked">Login!</Button>
+                BorderThickness="2" Width="400" Height="500">
+                <StackPanel>
+                    <StackPanel x:Name="login" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="Simple Popup" FontSize="24.667" HorizontalAlignment="Center"/>
+                        <Button Content="Close" Click="ClosePopupClicked" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Login" FontSize="24.667" HorizontalAlignment="Center"/>
+                        <TextBox x:Name="Username"></TextBox>
+                        <PasswordBox x:Name="Password" Width="200" MaxLength="16" PasswordChanged="passwordBox_PasswordChanged"/>
+                        <TextBlock x:Name="statusText" Margin="10" HorizontalAlignment="Center" />
+                        <Button x:Name="Login" Click="button_LoginButtonClicked">Login!</Button>
+                    </StackPanel>
+                    <StackPanel x:Name="register" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="Simple Popup" FontSize="24.667" HorizontalAlignment="Center"/>
+                        <TextBox x:Name="RegisterUsername"></TextBox>
+                        <PasswordBox x:Name="RegisterPassword" Width="200" MaxLength="16" PasswordChanged="passwordBox_PasswordChanged"/>
+                        <TextBox x:Name="RegisterEmail"></TextBox>
+                        <TextBox x:Name="RegisterDateOfBirth"></TextBox>
+                        <Button x:Name="RegisterLogin" Click="button_RegisterButtonClicked">Register!</Button>
+                    </StackPanel>
                 </StackPanel>
             </Border>
         </Popup>

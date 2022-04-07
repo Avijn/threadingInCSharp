@@ -20,8 +20,8 @@
 
         <Grid x:Name="ToDo" Grid.Column="0" Grid.Row="0" BorderBrush="White" BorderThickness="10">
             <StackPanel x:Name="ToDoBlock" HorizontalAlignment="Center">
-                <Button x:Name="firsttodo" Grid.Column="0" Grid.Row="0" Text="Hallo" FontSize="128" Foreground="Black">
-                    
+                <Button x:Name="firsttodo" Grid.Column="0" Grid.Row="0" FontSize="128" Foreground="Black">
+                    Hallo
                 </Button>
             </StackPanel>
         </Grid>

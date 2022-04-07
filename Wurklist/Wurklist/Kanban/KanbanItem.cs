@@ -22,13 +22,13 @@ namespace Wurklist.Kanban
             Low
         }
 
-        private KanbanItemPositions itemPosition = KanbanItemPositions.ToDo; //a new kanban item is standard in the todo list
-        private String itemName { get; set; }
-        private String itemDescription { get; set; }
-        private String itemlastEditByUser { get; set; }
-        private DateTime itemCreated { get; set; }
-        private DateTime itemDeadline { get; set; }
-        private KanbanItemPriority itemPriority = KanbanItemPriority.Low; //a new kanban item is standard in a low priority
+        public KanbanItemPositions itemPosition = KanbanItemPositions.ToDo; //a new kanban item is standard in the todo list
+        public string itemName { get; set; }
+        public string itemDescription { get; set; }
+        public string itemlastEditByUser { get; set; }
+        public DateTime itemCreated { get; set; }
+        public DateTime itemDeadline { get; set; }
+        public KanbanItemPriority itemPriority = KanbanItemPriority.Low; //a new kanban item is standard in a low priority
 
         public KanbanItem(string itemName, string itemDescription, string itemlastEditByUser, DateTime itemCreated, DateTime itemDeadline)
         {

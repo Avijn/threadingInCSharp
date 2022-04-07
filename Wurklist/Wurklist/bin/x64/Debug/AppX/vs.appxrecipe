@@ -30,33 +30,65 @@
     <AppXManifest Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-04-04T11:47:40.330</Modified>
+      <Modified>2022-04-07T09:43:03.535</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Wurklist.exe">
       <PackagePath>entrypoint\Wurklist.exe</PackagePath>
-      <Modified>2022-04-04T11:47:37.698</Modified>
+      <Modified>2022-04-07T09:43:01.391</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\microsoft.bcl.asyncinterfaces\1.1.1\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll">
-      <PackagePath>Microsoft.Bcl.AsyncInterfaces.dll</PackagePath>
-      <Modified>2020-04-14T22:38:32.000</Modified>
+    <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\bouncycastle.netcore\1.8.5\lib\netstandard2.0\BouncyCastle.Crypto.dll">
+      <PackagePath>BouncyCastle.Crypto.dll</PackagePath>
+      <Modified>2019-03-18T11:53:36.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\npoco\5.3.2\lib\netstandard2.0\NPoco.dll">
-      <PackagePath>NPoco.dll</PackagePath>
-      <Modified>2021-12-09T11:56:30.000</Modified>
+    <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\google.protobuf\3.14.0\lib\netstandard2.0\Google.Protobuf.dll">
+      <PackagePath>Google.Protobuf.dll</PackagePath>
+      <Modified>2020-11-13T15:09:34.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\k4os.compression.lz4\1.2.6\lib\netstandard2.0\K4os.Compression.LZ4.dll">
+      <PackagePath>K4os.Compression.LZ4.dll</PackagePath>
+      <Modified>2020-09-12T01:11:58.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\k4os.compression.lz4.streams\1.2.6\lib\netstandard2.0\K4os.Compression.LZ4.Streams.dll">
+      <PackagePath>K4os.Compression.LZ4.Streams.dll</PackagePath>
+      <Modified>2020-09-12T01:11:58.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\k4os.hash.xxhash\1.0.6\lib\netstandard2.0\K4os.Hash.xxHash.dll">
+      <PackagePath>K4os.Hash.xxHash.dll</PackagePath>
+      <Modified>2019-07-03T20:39:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\mysql.data\8.0.28\lib\netstandard2.0\MySql.Data.dll">
+      <PackagePath>MySql.Data.dll</PackagePath>
+      <Modified>2021-12-01T23:08:56.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\mysql.data\8.0.28\lib\netstandard2.0\Ubiety.Dns.Core.dll">
+      <PackagePath>Ubiety.Dns.Core.dll</PackagePath>
+      <Modified>2021-12-01T23:07:24.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\mysql.data\8.0.28\lib\netstandard2.0\ZstdNet.dll">
+      <PackagePath>ZstdNet.dll</PackagePath>
+      <Modified>2021-12-01T23:07:24.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\runtime.win10-x64.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x64\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
       <Modified>2020-02-27T19:17:32.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\system.linq.async\5.0.0\lib\netstandard2.0\System.Linq.Async.dll">
-      <PackagePath>System.Linq.Async.dll</PackagePath>
-      <Modified>2020-11-10T15:53:32.000</Modified>
+    <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\system.configuration.configurationmanager\4.4.1\lib\netstandard2.0\System.Configuration.ConfigurationManager.dll">
+      <PackagePath>System.Configuration.ConfigurationManager.dll</PackagePath>
+      <Modified>2017-11-20T17:09:04.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\system.runtime.compilerservices.unsafe\4.5.3\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll">
+    <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\system.runtime.compilerservices.unsafe\5.0.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll">
       <PackagePath>System.Runtime.CompilerServices.Unsafe.dll</PackagePath>
-      <Modified>2020-02-19T10:05:16.000</Modified>
+      <Modified>2020-10-19T16:46:44.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\system.security.cryptography.protecteddata\4.4.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll">
+      <PackagePath>System.Security.Cryptography.ProtectedData.dll</PackagePath>
+      <Modified>2017-07-19T08:01:34.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\system.security.permissions\4.7.0\lib\netstandard2.0\System.Security.Permissions.dll">
+      <PackagePath>System.Security.Permissions.dll</PackagePath>
+      <Modified>2019-11-15T08:37:44.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\win2d.uwp\1.20.0\runtimes\win10-x64\native\Microsoft.Graphics.Canvas.dll">
       <PackagePath>Microsoft.Graphics.Canvas.dll</PackagePath>
@@ -90,9 +122,9 @@
       <PackagePath>Xamarin.Forms.Platform.UAP\Xamarin.Forms.Platform.UAP.xr.xml</PackagePath>
       <Modified>2022-01-18T09:16:30.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Properties\Default.rd.xml">
-      <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2022-04-01T14:42:47.563</Modified>
+    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Assets\Sad_Cat_Thumbs_Up.png">
+      <PackagePath>Assets\Sad_Cat_Thumbs_Up.png</PackagePath>
+      <Modified>2022-04-06T11:15:34.385</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -128,17 +160,25 @@
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2022-04-01T14:42:47.542</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
+      <Modified>2022-04-01T14:42:47.563</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Wurklist.xr.xml">
       <PackagePath>Wurklist.xr.xml</PackagePath>
-      <Modified>2022-04-04T09:17:40.381</Modified>
+      <Modified>2022-04-06T13:05:03.031</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2022-04-04T11:47:37.476</Modified>
+      <Modified>2022-04-07T09:43:01.184</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Kanban\KanbanBoard.xbf">
+      <PackagePath>Kanban\KanbanBoard.xbf</PackagePath>
+      <Modified>2022-04-07T09:43:01.185</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2022-04-04T11:47:37.476</Modified>
+      <Modified>2022-04-07T09:43:01.185</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.19041.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -154,11 +194,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2022-04-04T11:47:38.008</Modified>
+      <Modified>2022-04-07T09:36:20.045</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Core\Wurklist.exe">
       <PackagePath>Wurklist.exe</PackagePath>
-      <Modified>2022-04-04T11:47:40.319</Modified>
+      <Modified>2022-04-07T09:43:03.519</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
