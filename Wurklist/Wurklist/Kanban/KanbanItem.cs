@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Wurklist.Kanban
 {
-    class KanbanItem
+    public class KanbanItem
     {
         public enum KanbanItemPositions
         {

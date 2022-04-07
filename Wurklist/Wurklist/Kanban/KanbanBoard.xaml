@@ -18,18 +18,44 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid x:Name="ToDo" Grid.Column="0" Grid.Row="0" BorderBrush="White" BorderThickness="10">
-            <StackPanel x:Name="ToDoBlock" HorizontalAlignment="Center">
-                <Button x:Name="firsttodo" Grid.Column="0" Grid.Row="0" FontSize="128" Foreground="Black">
-                    Hallo
-                </Button>
+        <Grid x:Name="ToDo" Grid.Column="0" Grid.Row="0" BorderBrush="White" BorderThickness="2">
+            <StackPanel x:Name="ToDoText" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center">
+                <TextBlock Text="ToDo" FontSize="50"></TextBlock>
+                <StackPanel x:Name="ToDoBlock" HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <Button x:Name="firsttodo" Grid.Column="0" Grid.Row="0" Width="400" Height="150" Margin="25" Foreground="Black">
+                        
+                    </Button>
+                    <Button x:Name="secondtodo" Grid.Column="0" Grid.Row="0" Width="400" Height="150" Margin="25" Foreground="Black">
+
+                    </Button>
+                </StackPanel>
             </StackPanel>
         </Grid>
-        <Grid x:Name="Doing" Grid.Column="1" Grid.Row="0" BorderBrush="White" BorderThickness="10">
+        <Grid x:Name="Doing" Grid.Column="1" Grid.Row="0" BorderBrush="White" BorderThickness="2">
+            <StackPanel x:Name="DoingText" HorizontalAlignment="Center">
+                <TextBlock Text="Doing" FontSize="50"></TextBlock>
+                <StackPanel x:Name="DoingBlock" HorizontalAlignment="Center">
+                    <Button x:Name="firstDoing" Width="400" Height="150" Margin="25" Foreground="Black">
 
+                    </Button>
+                    <Button x:Name="secondDoing" Width="400" Height="150" Margin="25" Foreground="Black">
+
+                    </Button>
+                </StackPanel>
+            </StackPanel>
         </Grid>
-        <Grid x:Name="Done" Grid.Column="2" Grid.Row="0" BorderBrush="White" BorderThickness="10">
+        <Grid x:Name="Done" Grid.Column="2" Grid.Row="0" BorderBrush="White" BorderThickness="2">
+            <StackPanel x:Name="DoneText" HorizontalAlignment="Center">
+                <TextBlock Text="Done" FontSize="50"></TextBlock>
+                <StackPanel x:Name="DoneBlock" HorizontalAlignment="Center">
+                    <Button x:Name="firstDone" Width="400" Height="150" Margin="25" Foreground="Black">
 
+                    </Button>
+                    <Button x:Name="secondDone" Width="400" Height="150" Margin="25" Foreground="Black">
+
+                    </Button>
+                </StackPanel>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

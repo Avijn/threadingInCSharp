@@ -113,13 +113,27 @@ C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\Mai
 C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\XamlSaveStateFile.xml
 C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\Wurklist.exe
 C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\Wurklist.pdb
-C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\NPoco.dll
-C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\System.Linq.Async.dll
 C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\Kanban\KanbanBoard.xbf
 C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\Kanban\KanbanBoard.g.i.cs
 C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\Kanban\KanbanBoard.g.cs
 C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\Kanban\KanbanBoard.xaml
 C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\Kanban\KanbanBoard.xbf
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\BouncyCastle.Crypto.dll
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\Google.Protobuf.dll
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\Google.Protobuf.pdb
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\K4os.Compression.LZ4.dll
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\K4os.Hash.xxHash.dll
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\MySql.Data.dll
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\Ubiety.Dns.Core.dll
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\ZstdNet.dll
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\System.Security.Permissions.dll
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\MySql.Data\en-US\MySql.Data.Resources.resw
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\MySql.Data\en-US\MySql.Data.ResourcesX.resw
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\FxResources.System.Configuration.ConfigurationManager.SR.resw
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\FxResources.System.Security.Cryptography.ProtectedData.SR.resw
+C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\FxResources.System.Security.Permissions.SR.resw
 C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\Wurklist.csprojAssemblyReference.cache
