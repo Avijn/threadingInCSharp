@@ -6,7 +6,7 @@ using Wurklist.Models;
 
 namespace Wurklist.DataBase
 {
-    internal class DBCalls
+    public class DBCalls
     {
         string connectionString;
         MySqlConnection conn;
@@ -14,8 +14,8 @@ namespace Wurklist.DataBase
 
         public DBCalls()
         {
-            //connectionString = @"server=10.110.110.121;database=Wurklist;user id=arjan;password=YecGaa";
-            connectionString = @"server=127.0.0.1;database=Test;user id = root;";
+            connectionString = @"server=10.110.110.121;database=Wurklist;user id=arjan;password=YecGaa";
+            //connectionString = @"server=127.0.0.1;database=Test;user id = root;";
             conn = new MySqlConnection(connectionString);
         }
 
@@ -85,8 +85,8 @@ namespace Wurklist.DataBase
         {
             try
             {
-                //string sql = @"SELECT Username, Password FROM User WHERE Username = @Username AND Password = @Password";
-                string sql = @"SELECT name, password FROM user WHERE name = @Username AND password = @Password;";
+                string sql = @"SELECT Name, Password FROM User WHERE Name = @Username AND Password = @Password";
+                //string sql = @"SELECT name, password FROM user WHERE name = @Username AND password = @Password;";
                 conn.Open();
                 cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@Username", user.Name);
@@ -134,8 +134,8 @@ namespace Wurklist.DataBase
         {
             try
             {
-                //string sql = @"INSERT INTO user (`Name`, `Password`, `Email`, `DateOfBirth`) VALUES (@name, @Password, @Email, @Dateofbirth);";
-                string sql = @"INSERT INTO user (`Name`, `Password`, `Email`, `DateOfBirth`) VALUES (@name, @Password, @Email, @DateOfBirth);";
+                string sql = @"INSERT INTO User (`Name`, `Password`, `Email`, `DateOfBirth`) VALUES (@name, @Password, @Email, @Dateofbirth);";
+                //string sql = @"INSERT INTO user (`Name`, `Password`, `Email`, `DateOfBirth`) VALUES (@name, @Password, @Email, @DateOfBirth);";
 
                 conn.Open();
                 cmd = new MySqlCommand(sql, conn);
@@ -147,8 +147,8 @@ namespace Wurklist.DataBase
 
                 cmd.Prepare();
                 cmd.ExecuteNonQuery();
-                conn.Close();
 
+                conn.Close();
                 return true;
             }
             catch (Exception)

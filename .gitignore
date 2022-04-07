@@ -423,3 +423,6 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/csharp,windows
 Wurklist/.vs/Wurklist/v17/.suo
+*.exe
+*.appxrecipe
+*.pdb

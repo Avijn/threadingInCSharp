@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-04-06T14:11:22.862</Modified>
+      <Modified>2022-04-07T09:43:03.535</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Wurklist.exe">
       <PackagePath>entrypoint\Wurklist.exe</PackagePath>
-      <Modified>2022-04-06T14:11:20.358</Modified>
+      <Modified>2022-04-07T09:43:01.391</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\bouncycastle.netcore\1.8.5\lib\netstandard2.0\BouncyCastle.Crypto.dll">
       <PackagePath>BouncyCastle.Crypto.dll</PackagePath>
@@ -170,15 +170,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2022-04-06T14:11:20.128</Modified>
+      <Modified>2022-04-07T09:43:01.184</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Kanban\KanbanBoard.xbf">
       <PackagePath>Kanban\KanbanBoard.xbf</PackagePath>
-      <Modified>2022-04-06T14:11:20.129</Modified>
+      <Modified>2022-04-07T09:43:01.185</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2022-04-06T14:11:20.130</Modified>
+      <Modified>2022-04-07T09:43:01.185</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.19041.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -194,11 +194,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2022-04-06T11:49:26.085</Modified>
+      <Modified>2022-04-07T09:36:20.045</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Core\Wurklist.exe">
       <PackagePath>Wurklist.exe</PackagePath>
-      <Modified>2022-04-06T14:11:22.842</Modified>
+      <Modified>2022-04-07T09:43:03.519</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
