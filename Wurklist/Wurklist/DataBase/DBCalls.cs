@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using Wurklist.General;
+using Wurklist.Kanban;
 using Wurklist.Models;
 
 namespace Wurklist.DataBase
@@ -81,12 +82,13 @@ namespace Wurklist.DataBase
             }
         }
 
-        public bool CheckLogin(User user)
+        public int CheckLogin(User user)
         {
             try
             {
-                string sql = @"SELECT Name, Password FROM User WHERE Name = @Username AND Password = @Password";
+                string sql = @"SELECT Id FROM User WHERE Name = @Username AND Password = @Password";
                 //string sql = @"SELECT name, password FROM user WHERE name = @Username AND password = @Password;";
+                int userId = 0;
                 conn.Open();
                 cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@Username", user.Name);
@@ -94,13 +96,12 @@ namespace Wurklist.DataBase
                 cmd.Prepare();
 
                 MySqlDataReader result = cmd.ExecuteReader();
-                if(result.HasRows)
+                while(result.Read())
                 {
-                    conn.Close();
-                    return true;
+                    userId = result.GetInt32("Id");
                 }
                 conn.Close();
-                return false;
+                return userId;
             }
             catch (Exception e)
             {
@@ -119,9 +120,47 @@ namespace Wurklist.DataBase
 
                 var result = cmd.ExecuteReaderAsync();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw e;
+                throw;
+            }
+        }
+
+        public List<KanbanItem> GetKanbanItemsByProjectId(int id)
+        {
+            try
+            {
+                List<KanbanItem> kanbanItems = new List<KanbanItem>();
+                string sql = @"SELECT * FROM Task WHERE ProjectId = @ProjectId";
+                conn.Open();
+                cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@ProjectId", id);
+                cmd.Prepare();
+
+                MySqlDataReader result = cmd.ExecuteReader();
+
+                while (result.Read())
+                {
+                    if (result.HasRows)
+                    {
+                        kanbanItems.Add(new KanbanItem(
+                            result.GetString("Name"),
+                            result.GetString("Description"),
+                            result.GetString("LastEditedByUserId"),
+                            result.GetString("ItemCreated"),
+                            result.GetDateTime("Deadline"),
+                            result.GetInt16("UserId"),
+                            result.GetInt16("Priority")
+                        ));
+                    }
+
+                }
+                conn.Close();
+                return kanbanItems;
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
 
@@ -155,7 +194,26 @@ namespace Wurklist.DataBase
             {
                 throw;
             }
-              
+        }
+
+        public bool InsertKanbanTask(KanbanItem item)
+        {
+            try
+            {
+                string sql = @"INSERT INTO Task ('Name', 'Description', 'Activity', 'Deadline', 'ProjectId', 'UserId', 'Priority', 'LastEditedByUserId', 'ItemCreated') VALUES (@name, @description, @activity, @deadline, @projectid, @userid, @priority, @lasteditedbyuserid);";
+                conn.Open();
+                cmd = new MySqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("@name", item.itemName);
+                cmd.Parameters.AddWithValue("@description", item.itemDescription);
+                cmd.Parameters.AddWithValue("@activity", item.status);
+                cmd.Parameters.AddWithValue("@activity", item.itemlastEditByUser);
+                cmd.Parameters.AddWithValue("@projectid", item.project);
+                cmd.Parameters.AddWithValue("@name", item.itemCreated);
+                cmd.Parameters.AddWithValue("@name", item.itemDeadline);
+                cmd.Parameters.AddWithValue("@name", item.itemAssignedUserId);
+                cmd.Parameters.AddWithValue("@name", item.itemPriority);
+            }
         }
 
         ////

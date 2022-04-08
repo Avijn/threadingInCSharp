@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Wurklist.General;
 using Wurklist.DataBase;
 using Wurklist.Models;
+using Wurklist.Kanban;
 
 namespace Wurklist.login
 {
@@ -20,19 +21,20 @@ namespace Wurklist.login
             _dbcalls = new DBCalls();
         }
 
-        public bool TryLogin(User user)
+        public int TryLogin(User user)
         {
-            //byte[] data = System.Text.Encoding.ASCII.GetBytes(user.Password);
-            //data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
-            //String hash = System.Text.Encoding.ASCII.GetString(data);
-            user.Password = EncryptPassword(user.Password);
-            //_dbcalls.GetCustomTasksUser(1);
-            //List<CustomTask> customstasks = _dbcalls.getCustomTasksUser(1);
-            if(_dbcalls.CheckLogin(user))
+            try
             {
-                return true;
+                user.Password = EncryptPassword(user.Password);
+                List<KanbanItem> kanbatitems = _dbcalls.GetKanbanItemsByProjectId(1);
+                int userId = _dbcalls.CheckLogin(user);
+                
+                return userId;
             }
-            return false;
+            catch(Exception)
+            {
+                throw;
+            }
         }
 
         public bool Register(User user)
