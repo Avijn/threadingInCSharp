@@ -9,6 +9,7 @@ namespace Wurklist.General
 {
     public class User
     {
+        public static int ID { get; set; }
         public string Name { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
@@ -26,6 +27,16 @@ namespace Wurklist.General
         {
             Name = name;
             Password = password;
+        }
+
+        public static int GetUserId()
+        {
+            return ID;
+        }
+
+        public void SetUserId(int id)
+        {
+            ID = id;
         }
     }
 }

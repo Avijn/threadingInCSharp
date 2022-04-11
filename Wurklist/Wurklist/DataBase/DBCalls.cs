@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using Wurklist.General;
+using Wurklist.Kanban;
 using Wurklist.Models;
 
 namespace Wurklist.DataBase
@@ -14,8 +15,8 @@ namespace Wurklist.DataBase
 
         public DBCalls()
         {
-            connectionString = @"server=10.110.110.121;database=Wurklist;user id=arjan;password=YecGaa";
-            //connectionString = @"server=127.0.0.1;database=Test;user id = root;";
+            //connectionString = @"server=10.110.110.121;database=Wurklist;user id=arjan;password=YecGaa";
+            connectionString = @"server=127.0.0.1;database=Test;user id = root;";
             conn = new MySqlConnection(connectionString);
         }
 
@@ -109,22 +110,69 @@ namespace Wurklist.DataBase
             }
         }
 
-        public void GetProjectByUserId(int id)
+        public List<int> GetProjectIdsByUserId(int id)
         {
             try
             {
-                string sql = @"SELECT ProjectId FROM Group WHERE UserId = @UserId";
+                List<int> projectIDs = new List<int>();
+                conn.Open();
+                //string sql = @"SELECT ProjectId FROM group WHERE UserId = @UserId";
+                string sql = @"SELECT ProjectId FROM projectGroup WHERE UserId = @UserId";
                 cmd = new MySqlCommand(sql, conn);
-                cmd.Prepare();
                 cmd.Parameters.AddWithValue("@UserId", id);
+                cmd.Prepare();
 
-                var result = cmd.ExecuteReaderAsync();
+                MySqlDataReader result = cmd.ExecuteReader();
+
+                while (result.Read())
+                {
+                    if (result.HasRows)
+                    {
+                        projectIDs.Add(result.GetInt32("ProjectId"));
+                    }
+                }
+                conn.Close();
+                return projectIDs;
             }
             catch (Exception)
             {
                 throw;
             }
         }
+
+        public List<KanbanProject> GetProjectsByProjectId(int id)
+        {
+            List<KanbanProject> kanbanProjects = new List<KanbanProject>();
+            conn.Open();
+
+            string projectsQuery = @"SELECT * FROM Project WHERE ID = @id;";
+            cmd = new MySqlCommand(projectsQuery, conn);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Prepare();
+
+            MySqlDataReader result = cmd.ExecuteReader();
+
+            while (result.Read())
+            {
+                if (result.HasRows)
+                {
+                    kanbanProjects.Add(new KanbanProject(
+                        result.GetInt32("Id"),
+                        result.GetString("Name"),
+                        result.GetString("Description"),
+                        GetKanbanItemsByProjectId(result.GetInt32("id")),
+                        result.GetInt32("CreatedByUserId"),
+                        "123",
+                        result.GetString("Created"),
+                        result.GetString("Deadline")
+                    ));
+                }
+            }
+            conn.Close();
+            
+            return kanbanProjects;
+        }
+    
 
         public List<TaskItem> GetKanbanItemsByProjectId(int id)
         {
@@ -195,9 +243,9 @@ namespace Wurklist.DataBase
         }
 
         /*
-         * @params CustomTask is a task that is made either in the kanbanboard or in the agenda
+         * @params TaskItem is a task that is made either in the kanbanboard or in the agenda
          */
-        public bool InsertKanbanTask(CustomTask item)
+        public bool InsertKanbanTask(TaskItem item)
         {
             try
             {
@@ -213,7 +261,7 @@ namespace Wurklist.DataBase
                 cmd.Parameters.AddWithValue("@userid", item.ProjectId);
                 cmd.Parameters.AddWithValue("@priority", item.Deadline);
                 cmd.Parameters.AddWithValue("@lasteditedbyuserid", item.LastEditedByUserId);
-                cmd.Parameters.AddWithValue("@ItemCreated", item.ItemCreated);
+                cmd.Parameters.AddWithValue("@ItemCreated", item.Created);
 
                 cmd.Prepare();
                 cmd.ExecuteNonQuery();
@@ -225,8 +273,27 @@ namespace Wurklist.DataBase
             {
                 throw;
             }
-            
         }
+
+        public bool InsertProject(KanbanProject project)
+        {
+            try
+            {
+                string sql = @"INSERT INTO Project('Name', 'deadline') VALUES (@name, @deadline);";
+                conn.Open();
+                cmd = new MySqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("@name", project.Name);
+
+
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+          
 
         ////
         /// Update statements

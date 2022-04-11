@@ -27,7 +27,7 @@ namespace Wurklist.Kanban
             FillBtn(firsttodo);
             DateTime datum1 = new DateTime(2008, 3, 1, 7, 0, 0);
             DateTime datum2 = new DateTime(2009, 3, 1, 7, 0, 0);
-            TaskItem kanban = new TaskItem("Taak1", "Beschrijving1", "SomeUser1", datum1, datum2);
+            TaskItem kanban = new TaskItem("Taak1", "Beschrijving1", "02-02-2222", 1, 1, 1, "02-02-2222");
             AddBtn(kanban);
         }
 
@@ -40,7 +40,7 @@ namespace Wurklist.Kanban
         public void AddBtn(TaskItem kanbanItem)
         {
             Button button = new Button();
-            button.Content = kanbanItem.itemName;
+            button.Content = kanbanItem.Name;
             button.FontSize = 20;
             button.Click += ShowKanbanItem_Click;
             button.Width = 400;

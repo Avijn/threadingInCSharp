@@ -4,52 +4,58 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wurklist.DataBase;
+using Wurklist.General;
 using Wurklist.Models;
 
 namespace Wurklist.Kanban
 {
-    class KanbanProject
+    public class KanbanProject
     {
         private readonly DBCalls _dBCalls;
-        private String projectName { get; set; }
-        private String projectDescription { get; set; }
-        private List<TaskItem> projectItems = new List<TaskItem>();
-        private String projectCreatedByUser { get; set; }
-        private String projectContributors { get; set; }
-        private DateTime projectCreated { get; set; }
-        private DateTime projectDeadline { get; set; }
 
-        public KanbanProject(string projectName, string projectDescription, List<TaskItem> projectItems, string projectCreatedByUser, string projectContributors, DateTime projectCreated, DateTime projectDeadline)
+        public int? ID { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public int CreatedByUserId { get; set; }
+        public string Contributors { get; set; }
+        public string Created { get; set; }
+        public string Deadline { get; set; }
+        public List<TaskItem> Items;
+
+        public KanbanProject(int? Id, string projectName, string projectDescription, List<TaskItem> projectItems, int projectCreatedByUserId, string projectContributors, string projectCreated, string projectDeadline)
         {
-            this.projectName = projectName;
-            this.projectDescription = projectDescription;
-            this.projectItems = projectItems;
-            this.projectCreatedByUser = projectCreatedByUser;
-            this.projectContributors = projectContributors;
-            this.projectCreated = projectCreated;
-            this.projectDeadline = projectDeadline;
 
-            this._dBCalls = new DBCalls();
+            _dBCalls = new DBCalls();
+
+            ID = Id;
+            Name = projectName;
+            Description = projectDescription;
+            Items = projectItems;
+            CreatedByUserId = projectCreatedByUserId;
+            Contributors = projectContributors;
+            Created = projectCreated;
+            Deadline = projectDeadline;
+            Items = new List<TaskItem>();
         }
 
         public List<TaskItem> getProjectItems()
         {
-            return projectItems;
+            return _dBCalls.GetKanbanItemsByProjectId(User.GetUserId());
         }
 
         public void addProjectItem(TaskItem newKanbanItem)
         {
-            projectItems.Add(newKanbanItem);
+            Items.Add(newKanbanItem);
         }
 
         public void deleteProjectItem(TaskItem kanbanItem)
         {
-            projectItems.Remove(kanbanItem);
+            Items.Remove(kanbanItem);
         }
 
         public void setProjectItems(List<TaskItem> newKanbanItems)
         {
-            projectItems = newKanbanItems;
+            Items = newKanbanItems;
         }
 
         //public void OnTaskItemChange(TaskItem item)

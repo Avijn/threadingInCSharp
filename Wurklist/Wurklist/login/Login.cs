@@ -26,9 +26,20 @@ namespace Wurklist.login
             try
             {
                 user.Password = EncryptPassword(user.Password);
-                List<CustomTask> kanbatitems = _dbcalls.GetKanbanItemsByProjectId(1);
                 int userId = _dbcalls.CheckLogin(user);
-                
+                user.SetUserId(userId);
+                //test
+                List<int> ids = _dbcalls.GetProjectIdsByUserId(userId);
+                List<List<KanbanProject>> allProjectsFromUser = new List<List<KanbanProject>>(); 
+
+                foreach(int id in ids)
+                {
+                    allProjectsFromUser.Add(_dbcalls.GetProjectsByProjectId(id));
+                }
+                //
+
+
+
                 return userId;
             }
             catch(Exception)
