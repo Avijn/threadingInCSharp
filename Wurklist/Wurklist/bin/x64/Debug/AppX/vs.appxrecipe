@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>LAPTOP-4CDLG3V5</Machine>
+    <Machine>DESKTOP-JBEN74N</Machine>
     <WindowsUser>Arjan</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
@@ -10,7 +10,7 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>40d22202-baf2-424c-a591-4809189ec4bf</PackageIdentityName>
     <PackageIdentityPublisher>CN=Robin</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\obj\x64\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\threadingInCSharp\Wurklist\Wurklist\obj\x64\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,7 +18,7 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\AppX</LayoutDir>
+    <LayoutDir>C:\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\AppX</LayoutDir>
     <RegisteredManifestChecksum>DC3B4234A5DA1AC1E94A074C96C621F122AB8F2750BC4320FF91516B1DCF5609</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>40d22202-baf2-424c-a591-4809189ec4bf_1.0.0.0_x64__t00p8wa3xykt2</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>40d22202-baf2-424c-a591-4809189ec4bf_t00p8wa3xykt2!App</RegisteredUserModeAppID>
@@ -27,16 +27,16 @@
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-04-07T09:43:03.535</Modified>
+      <Modified>2022-04-11T12:52:27.459</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Wurklist.exe">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Wurklist.exe">
       <PackagePath>entrypoint\Wurklist.exe</PackagePath>
-      <Modified>2022-04-07T09:43:01.391</Modified>
+      <Modified>2022-04-11T12:52:26.880</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\bouncycastle.netcore\1.8.5\lib\netstandard2.0\BouncyCastle.Crypto.dll">
       <PackagePath>BouncyCastle.Crypto.dll</PackagePath>
@@ -80,7 +80,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\system.runtime.compilerservices.unsafe\5.0.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll">
       <PackagePath>System.Runtime.CompilerServices.Unsafe.dll</PackagePath>
-      <Modified>2020-10-19T16:46:44.000</Modified>
+      <Modified>2020-10-19T18:46:44.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\system.security.cryptography.protecteddata\4.4.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll">
       <PackagePath>System.Security.Cryptography.ProtectedData.dll</PackagePath>
@@ -122,63 +122,63 @@
       <PackagePath>Xamarin.Forms.Platform.UAP\Xamarin.Forms.Platform.UAP.xr.xml</PackagePath>
       <Modified>2022-01-18T09:16:30.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Assets\Sad_Cat_Thumbs_Up.png">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\Assets\Sad_Cat_Thumbs_Up.png">
       <PackagePath>Assets\Sad_Cat_Thumbs_Up.png</PackagePath>
-      <Modified>2022-04-06T11:15:34.385</Modified>
+      <Modified>2022-04-11T09:06:18.757</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2022-04-01T14:42:47.529</Modified>
+      <Modified>2022-04-11T09:06:04.296</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-04-01T14:42:47.531</Modified>
+      <Modified>2022-04-11T09:06:04.296</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-04-01T14:42:47.534</Modified>
+      <Modified>2022-04-11T09:06:04.297</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-04-01T14:42:47.536</Modified>
+      <Modified>2022-04-11T09:06:04.297</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-04-01T14:42:47.538</Modified>
+      <Modified>2022-04-11T09:06:04.297</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-04-01T14:42:47.540</Modified>
+      <Modified>2022-04-11T09:06:04.298</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-04-01T14:42:47.542</Modified>
+      <Modified>2022-04-11T09:06:04.298</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2022-04-01T14:42:47.563</Modified>
+      <Modified>2022-04-11T09:06:04.302</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Wurklist.xr.xml">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Wurklist.xr.xml">
       <PackagePath>Wurklist.xr.xml</PackagePath>
-      <Modified>2022-04-06T13:05:03.031</Modified>
+      <Modified>2022-04-11T12:52:26.816</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2022-04-07T09:43:01.184</Modified>
+      <Modified>2022-04-11T12:52:26.822</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Kanban\KanbanBoard.xbf">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Kanban\KanbanBoard.xbf">
       <PackagePath>Kanban\KanbanBoard.xbf</PackagePath>
-      <Modified>2022-04-07T09:43:01.185</Modified>
+      <Modified>2022-04-11T12:52:26.822</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2022-04-07T09:43:01.185</Modified>
+      <Modified>2022-04-11T12:52:26.822</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.19041.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -192,13 +192,13 @@
       <PackagePath>WinMetadata\Microsoft.UI.Xaml.winmd</PackagePath>
       <Modified>2020-07-10T00:07:08.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2022-04-07T09:36:20.045</Modified>
+      <Modified>2022-04-11T12:48:04.306</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Core\Wurklist.exe">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Core\Wurklist.exe">
       <PackagePath>Wurklist.exe</PackagePath>
-      <Modified>2022-04-07T09:43:03.519</Modified>
+      <Modified>2022-04-11T12:52:27.456</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

@@ -12,8 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
+using Wurklist.Models;
 
 namespace Wurklist.Kanban
 {
@@ -28,7 +27,7 @@ namespace Wurklist.Kanban
             FillBtn(firsttodo);
             DateTime datum1 = new DateTime(2008, 3, 1, 7, 0, 0);
             DateTime datum2 = new DateTime(2009, 3, 1, 7, 0, 0);
-            KanbanItem kanban = new KanbanItem("Taak1", "Beschrijving1", "SomeUser1", datum1, datum2);
+            TaskItem kanban = new TaskItem("Taak1", "Beschrijving1", "SomeUser1", datum1, datum2);
             AddBtn(kanban);
         }
 
@@ -38,7 +37,7 @@ namespace Wurklist.Kanban
             button.FontSize = 20;            
         }
 
-        public void AddBtn(KanbanItem kanbanItem)
+        public void AddBtn(TaskItem kanbanItem)
         {
             Button button = new Button();
             button.Content = kanbanItem.itemName;

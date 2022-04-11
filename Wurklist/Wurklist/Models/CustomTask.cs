@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Wurklist.Models
+﻿namespace Wurklist.Models
 {
     public class CustomTask
     {
-        // TODO Decide if the public int Id should be here, do we NEED the Id attriubute
-        //public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Activity { get; set; }
         public string Deadline { get; set; }
         public int? ProjectId { get;set; }
         public int? UserId { get; set; }
+        public int? LastEditedByUserId { get; set; }
         public int? Priority { get; set; }
+        public string ItemCreated { get; set; }
 
-        public CustomTask(string name, string description, string activity, string deadline, int? projectId, int? userId, int? priority)
+        public CustomTask(string name, string description, string activity, string deadline, int? projectId, int? userId, int? priority, int? lastEditedByUserId, string itemCreated)
         {
             Name = name;
             Description = description;
@@ -27,6 +21,8 @@ namespace Wurklist.Models
             ProjectId = projectId;
             UserId = userId;
             Priority = priority;
+            LastEditedByUserId = lastEditedByUserId;
+            ItemCreated = itemCreated;
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>LAPTOP-4CDLG3V5</Machine>
+    <Machine>DESKTOP-JBEN74N</Machine>
     <WindowsUser>Arjan</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
@@ -10,22 +10,22 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>40d22202-baf2-424c-a591-4809189ec4bf</PackageIdentityName>
     <PackageIdentityPublisher>CN=Robin</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\obj\x64\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\threadingInCSharp\Wurklist\Wurklist\obj\x64\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\AppX</LayoutDir>
+    <LayoutDir>C:\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\AppX</LayoutDir>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Wurklist.exe">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Wurklist.exe">
       <PackagePath>entrypoint\Wurklist.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\bouncycastle.netcore\1.8.5\lib\netstandard2.0\BouncyCastle.Crypto.dll">
@@ -91,49 +91,49 @@
     <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\xamarin.forms\5.0.0.2337\lib\uap10.0.16299\Xamarin.Forms.Platform.UAP\Xamarin.Forms.Platform.UAP.xr.xml">
       <PackagePath>Xamarin.Forms.Platform.UAP\Xamarin.Forms.Platform.UAP.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Assets\Sad_Cat_Thumbs_Up.png">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\Assets\Sad_Cat_Thumbs_Up.png">
       <PackagePath>Assets\Sad_Cat_Thumbs_Up.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Wurklist.xr.xml">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Wurklist.xr.xml">
       <PackagePath>Wurklist.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Kanban\KanbanBoard.xbf">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Kanban\KanbanBoard.xbf">
       <PackagePath>Kanban\KanbanBoard.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.19041.0\\redist\Debug\X64\ucrtbased.dll">
@@ -145,10 +145,10 @@
     <AppxPackagedFile Include="C:\Users\Arjan\.nuget\packages\microsoft.ui.xaml\2.4.3\buildTransitive\..\lib\uap10.0\Microsoft.UI.Xaml.winmd">
       <PackagePath>WinMetadata\Microsoft.UI.Xaml.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Core\Wurklist.exe">
+    <AppxPackagedFile Include="C:\threadingInCSharp\Wurklist\Wurklist\bin\x64\Debug\Core\Wurklist.exe">
       <PackagePath>Wurklist.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

@@ -124,7 +124,7 @@
     <Compile Include="Kanban\KanbanBoard.xaml.cs">
       <DependentUpon>KanbanBoard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Kanban\KanbanItem.cs" />
+    <Compile Include="Models\TaskItem.cs" />
     <Compile Include="Kanban\KanbanProject.cs" />
     <Compile Include="login\Login.cs" />
     <Compile Include="login\Register.cs" />

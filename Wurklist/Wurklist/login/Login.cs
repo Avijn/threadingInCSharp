@@ -26,7 +26,7 @@ namespace Wurklist.login
             try
             {
                 user.Password = EncryptPassword(user.Password);
-                List<KanbanItem> kanbatitems = _dbcalls.GetKanbanItemsByProjectId(1);
+                List<CustomTask> kanbatitems = _dbcalls.GetKanbanItemsByProjectId(1);
                 int userId = _dbcalls.CheckLogin(user);
                 
                 return userId;

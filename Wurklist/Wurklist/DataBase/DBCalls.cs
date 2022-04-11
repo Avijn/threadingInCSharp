@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using Wurklist.General;
-using Wurklist.Kanban;
 using Wurklist.Models;
 
 namespace Wurklist.DataBase
@@ -52,9 +51,10 @@ namespace Wurklist.DataBase
                         result.GetString("Deadline"),
                         result.GetInt16("ProjectId"),
                         result.GetInt16("UserId"),
-                        result.GetInt16("Priority")
+                        result.GetInt16("Priority"),
+                        result.GetInt16("LastEditedByUserId"),
+                        result.GetString("ItemCreated")
                     ));
-
                 }
                 conn.Close();
                 return customTasks;
@@ -97,7 +97,7 @@ namespace Wurklist.DataBase
 
                 MySqlDataReader result = cmd.ExecuteReader();
                 while(result.Read())
-                {
+                { 
                     userId = result.GetInt32("Id");
                 }
                 conn.Close();
@@ -126,11 +126,11 @@ namespace Wurklist.DataBase
             }
         }
 
-        public List<KanbanItem> GetKanbanItemsByProjectId(int id)
+        public List<TaskItem> GetKanbanItemsByProjectId(int id)
         {
             try
             {
-                List<KanbanItem> kanbanItems = new List<KanbanItem>();
+                List<TaskItem> customTasks = new List<TaskItem>();
                 string sql = @"SELECT * FROM Task WHERE ProjectId = @ProjectId";
                 conn.Open();
                 cmd = new MySqlCommand(sql, conn);
@@ -143,20 +143,19 @@ namespace Wurklist.DataBase
                 {
                     if (result.HasRows)
                     {
-                        kanbanItems.Add(new KanbanItem(
+                        customTasks.Add(new TaskItem(
                             result.GetString("Name"),
                             result.GetString("Description"),
-                            result.GetString("LastEditedByUserId"),
-                            result.GetString("ItemCreated"),
-                            result.GetDateTime("Deadline"),
+                            result.GetString("Deadline"),
+                            result.GetInt16("ProjectId"),
                             result.GetInt16("UserId"),
-                            result.GetInt16("Priority")
+                            result.GetInt16("LastEditedByUserId"),
+                            result.GetString("ItemCreated")
                         ));
                     }
-
                 }
                 conn.Close();
-                return kanbanItems;
+                return customTasks;
             }
             catch (Exception)
             {
@@ -174,8 +173,7 @@ namespace Wurklist.DataBase
             try
             {
                 string sql = @"INSERT INTO User (`Name`, `Password`, `Email`, `DateOfBirth`) VALUES (@name, @Password, @Email, @Dateofbirth);";
-                //string sql = @"INSERT INTO user (`Name`, `Password`, `Email`, `DateOfBirth`) VALUES (@name, @Password, @Email, @DateOfBirth);";
-
+                
                 conn.Open();
                 cmd = new MySqlCommand(sql, conn);
 
@@ -196,24 +194,38 @@ namespace Wurklist.DataBase
             }
         }
 
-        public bool InsertKanbanTask(KanbanItem item)
+        /*
+         * @params CustomTask is a task that is made either in the kanbanboard or in the agenda
+         */
+        public bool InsertKanbanTask(CustomTask item)
         {
             try
             {
-                string sql = @"INSERT INTO Task ('Name', 'Description', 'Activity', 'Deadline', 'ProjectId', 'UserId', 'Priority', 'LastEditedByUserId', 'ItemCreated') VALUES (@name, @description, @activity, @deadline, @projectid, @userid, @priority, @lasteditedbyuserid);";
+                string sql = @"INSERT INTO Task ('Name', 'Description', 'Activity', 'Deadline', 'ProjectId', 'UserId', 'Priority', 'LastEditedByUserId', 'ItemCreated') VALUES (@name, @description, @activity, @deadline, @projectid, @userid, @priority, @lasteditedbyuserid, @ItemCreated,); ";
                 conn.Open();
                 cmd = new MySqlCommand(sql, conn);
 
-                cmd.Parameters.AddWithValue("@name", item.itemName);
-                cmd.Parameters.AddWithValue("@description", item.itemDescription);
-                cmd.Parameters.AddWithValue("@activity", item.status);
-                cmd.Parameters.AddWithValue("@activity", item.itemlastEditByUser);
-                cmd.Parameters.AddWithValue("@projectid", item.project);
-                cmd.Parameters.AddWithValue("@name", item.itemCreated);
-                cmd.Parameters.AddWithValue("@name", item.itemDeadline);
-                cmd.Parameters.AddWithValue("@name", item.itemAssignedUserId);
-                cmd.Parameters.AddWithValue("@name", item.itemPriority);
+                cmd.Parameters.AddWithValue("@name", item.Name);
+                cmd.Parameters.AddWithValue("@description", item.Description);
+                cmd.Parameters.AddWithValue("@activity", item.Activity);
+                cmd.Parameters.AddWithValue("@deadline", item.Activity);
+                cmd.Parameters.AddWithValue("@projectid", item.ProjectId);
+                cmd.Parameters.AddWithValue("@userid", item.ProjectId);
+                cmd.Parameters.AddWithValue("@priority", item.Deadline);
+                cmd.Parameters.AddWithValue("@lasteditedbyuserid", item.LastEditedByUserId);
+                cmd.Parameters.AddWithValue("@ItemCreated", item.ItemCreated);
+
+                cmd.Prepare();
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+                return true;
             }
+            catch (Exception)
+            {
+                throw;
+            }
+            
         }
 
         ////
@@ -224,7 +236,6 @@ namespace Wurklist.DataBase
         ////
         /// Delete statements
         ////
-
 
     }
 }
