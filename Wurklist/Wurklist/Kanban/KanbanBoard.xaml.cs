@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Wurklist.DataBase;
 using Wurklist.Models;
 
 namespace Wurklist.Kanban
@@ -21,6 +22,9 @@ namespace Wurklist.Kanban
     /// </summary>
     public sealed partial class KanbanBoard : Page
     {
+        private readonly DBCalls _dbcalls;
+        private int UserId;
+
         public KanbanBoard()
         {
             this.InitializeComponent();
@@ -29,6 +33,17 @@ namespace Wurklist.Kanban
             DateTime datum2 = new DateTime(2009, 3, 1, 7, 0, 0);
             TaskItem kanban = new TaskItem("Taak1", "Beschrijving1", "02-02-2222", 1, 1, 1, "02-02-2222");
             AddBtn(kanban);
+            _dbcalls = new DBCalls();
+        }
+
+        public void SetUserId(int userid)
+        {
+            this.UserId = userid;
+        }
+
+        public int GetUserId()
+        {
+            return UserId;
         }
 
         public void FillBtn(Button button)
@@ -58,6 +73,17 @@ namespace Wurklist.Kanban
             };
 
             ContentDialogResult result = await showKanbanItem.ShowAsync();
+        }
+
+        public async void GetAllProjectTasksFromUser()
+        {
+            List<int> ids = _dbcalls.GetProjectIdsByUserId(UserId);
+            List<List<KanbanProject>> allProjectsFromUser = new List<List<KanbanProject>>();
+
+            foreach (int id in ids)
+            {
+                allProjectsFromUser.Add(await _dbcalls.GetProjectsByProjectId(id));
+            }
         }
     }
 }

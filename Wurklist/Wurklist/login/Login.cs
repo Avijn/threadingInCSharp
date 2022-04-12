@@ -21,20 +21,22 @@ namespace Wurklist.login
             _dbcalls = new DBCalls();
         }
 
-        public int TryLogin(User user)
+        public async Task<int> TryLoginAsync(User user)
         {
             try
             {
                 user.Password = EncryptPassword(user.Password);
                 int userId = _dbcalls.CheckLogin(user);
                 user.SetUserId(userId);
+
+
                 //test
                 List<int> ids = _dbcalls.GetProjectIdsByUserId(userId);
                 List<List<KanbanProject>> allProjectsFromUser = new List<List<KanbanProject>>(); 
 
                 foreach(int id in ids)
                 {
-                    allProjectsFromUser.Add(_dbcalls.GetProjectsByProjectId(id));
+                    allProjectsFromUser.Add(await _dbcalls.GetProjectsByProjectId(id));
                 }
                 //
 

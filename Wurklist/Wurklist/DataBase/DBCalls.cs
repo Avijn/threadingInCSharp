@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Wurklist.General;
 using Wurklist.Kanban;
 using Wurklist.Models;
@@ -117,7 +118,8 @@ namespace Wurklist.DataBase
                 List<int> projectIDs = new List<int>();
                 conn.Open();
                 //string sql = @"SELECT ProjectId FROM group WHERE UserId = @UserId";
-                string sql = @"SELECT ProjectId FROM projectGroup WHERE UserId = @UserId";
+                //string sql = @"SELECT ProjectId FROM projectGroup WHERE UserId = @UserId";
+                string sql = @"SELECT ProjectId FROM projectgroup WHERE UserId = @UserId";
                 cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@UserId", id);
                 cmd.Prepare();
@@ -140,37 +142,43 @@ namespace Wurklist.DataBase
             }
         }
 
-        public List<KanbanProject> GetProjectsByProjectId(int id)
+        public async Task<List<KanbanProject>> GetProjectsByProjectId(int id)
         {
-            List<KanbanProject> kanbanProjects = new List<KanbanProject>();
-            conn.Open();
-
-            string projectsQuery = @"SELECT * FROM Project WHERE ID = @id;";
-            cmd = new MySqlCommand(projectsQuery, conn);
-            cmd.Parameters.AddWithValue("@id", id);
-            cmd.Prepare();
-
-            MySqlDataReader result = cmd.ExecuteReader();
-
-            while (result.Read())
+            try
             {
-                if (result.HasRows)
+                List<KanbanProject> kanbanProjects = new List<KanbanProject>();
+                conn.Open();
+
+                string projectsQuery = @"SELECT * FROM Project WHERE ID = @id;";
+                cmd = new MySqlCommand(projectsQuery, conn);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Prepare();
+
+                MySqlDataReader result = cmd.ExecuteReader();
+
+                while (await result.ReadAsync())
                 {
-                    kanbanProjects.Add(new KanbanProject(
-                        result.GetInt32("Id"),
-                        result.GetString("Name"),
-                        result.GetString("Description"),
-                        GetKanbanItemsByProjectId(result.GetInt32("id")),
-                        result.GetInt32("CreatedByUserId"),
-                        "123",
-                        result.GetString("Created"),
-                        result.GetString("Deadline")
-                    ));
+                    if (result.HasRows)
+                    {
+                        kanbanProjects.Add(new KanbanProject(
+                            result.GetInt32("Id"),
+                            result.GetString("Name"),
+                            result.GetString("Description"),
+                            result.GetInt32("CreatedByUserId"),
+                            result.GetString("Created"),
+                            result.GetString("Deadline")
+                        ));
+                    }
                 }
+
+                conn.Close();
+
+                return kanbanProjects;
             }
-            conn.Close();
-            
-            return kanbanProjects;
+            catch(Exception)
+            {
+                throw;
+            }
         }
     
 
@@ -204,6 +212,40 @@ namespace Wurklist.DataBase
                 }
                 conn.Close();
                 return customTasks;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public List<User> GetUsersByProjectId(int id)
+        {
+            try
+            {
+                List<User> users = new List<User>();
+                string sql = @"SELECT ID, Name, Email, DateOfBirth from User u, projectgroup g WHERE u.id = g.userid AND g.ProjectId = @ProjectId";
+                conn.Open();
+                cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@ProjectId", id);
+                cmd.Prepare();
+
+                MySqlDataReader result = cmd.ExecuteReader();
+
+                while (result.Read())
+                {
+                    if (result.HasRows)
+                    {
+                        users.Add(new User(
+                            result.GetInt32("ID"),
+                            result.GetString("Name"),
+                            result.GetString("Email"),
+                            result.GetString("DateOfBirth")
+                        ));
+                    }
+                }
+                conn.Close();
+                return users;
             }
             catch (Exception)
             {

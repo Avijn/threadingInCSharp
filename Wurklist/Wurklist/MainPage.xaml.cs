@@ -24,6 +24,7 @@ namespace Wurklist
     {
         private login.Login _login;
         private Kanban.KanbanBoard kanban = new Kanban.KanbanBoard();
+        private int UserId;
 
         public MainPage()
         {
@@ -59,11 +60,13 @@ namespace Wurklist
             }
         }
 
-        private void button_LoginButtonClicked(object sender, RoutedEventArgs e)
+        private async void button_LoginButtonClicked(object sender, RoutedEventArgs e)
         {
             User user = new User(Username.Text, Password.Password);
 
-            _login.TryLogin(user);
+            UserId = await _login.TryLoginAsync(user);
+            kanban.SetUserId(UserId);
+            kanban.GetAllProjectTasksFromUser();
         }
         private void button_RegisterButtonClicked(object sender, RoutedEventArgs e)
         {

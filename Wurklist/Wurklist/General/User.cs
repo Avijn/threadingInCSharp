@@ -23,6 +23,14 @@ namespace Wurklist.General
             DateOfBirth = dateOfBirth;
         }
 
+        public User(int id, string name, string email, string dateOfBirth)
+        {
+            ID = id;
+            Name = Name;
+            Email = email;
+            DateOfBirth = dateOfBirth; 
+        }
+
         public User(string name, string password)
         {
             Name = name;

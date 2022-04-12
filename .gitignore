@@ -430,3 +430,11 @@ Wurklist/.vs/Wurklist/v17/.suo
 Wurklist/.vs/Wurklist/v17/.suo
 *.exe
 *.xbf
+Wurklist/Wurklist/bin/x64/Debug/AppX/vs.appxrecipe
+Wurklist/Wurklist/bin/x64/Debug/Wurklist.build.appxrecipe
+Wurklist/Wurklist/bin/x64/Debug/Wurklist.exe
+Wurklist/Wurklist/bin/x64/Debug/Wurklist.pdb
+*.exe
+*.appxrecipe
+*.appxrecipe
+*.pdb
