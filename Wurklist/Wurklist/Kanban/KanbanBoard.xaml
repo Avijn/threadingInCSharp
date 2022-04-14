@@ -18,22 +18,30 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <Button Background="darkgray" Foreground="black" FontSize="20" Height="100" Width="100" HorizontalAlignment="Right" Grid.Column="2" Margin="0,0,10,0" VerticalAlignment="Top" Click="ShowPopupAddTask">
+            Add Task
+        </Button>
+        <Popup x:Name="AddTaskPopup" VerticalOffset="10" HorizontalOffset="20" Height="500" Width="400">
+            <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
+                Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                BorderThickness="2" Width="400" Height="400">
+                <Button Content="Close" Click="ClosePopupAddTask" />
+            </Border>
+        </Popup>
+
         <Grid x:Name="ToDo" Grid.Column="0" Grid.Row="0" BorderBrush="White" BorderThickness="2">
-            <StackPanel x:Name="ToDoText" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center">
-                <TextBlock Text="ToDo" FontSize="50"></TextBlock>
-                <StackPanel x:Name="ToDoBlock" HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                    <Button x:Name="firsttodo" Grid.Column="0" Grid.Row="0" Width="400" Height="150" Margin="25" Foreground="Black">
-                        
-                    </Button>
-                    <Button x:Name="secondtodo" Grid.Column="0" Grid.Row="0" Width="400" Height="150" Margin="25" Foreground="Black">
+            <StackPanel x:Name="ToDoText" Grid.Row="0" Margin="0,116,0,10" HorizontalAlignment="Center">
+                <TextBlock Text="ToDo" FontSize="50" HorizontalAlignment="center"></TextBlock>
+                <StackPanel x:Name="ToDoBlock" HorizontalAlignment="Center"  ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <Button x:Name="firsttodo" Grid.Column="0" Grid.Row="0" Width="400" Height="150" Margin="25" Foreground="Black" Click="LoadProject" Content="AddTask">
 
                     </Button>
                 </StackPanel>
             </StackPanel>
         </Grid>
         <Grid x:Name="Doing" Grid.Column="1" Grid.Row="0" BorderBrush="White" BorderThickness="2">
-            <StackPanel x:Name="DoingText" HorizontalAlignment="Center">
-                <TextBlock Text="Doing" FontSize="50"></TextBlock>
+            <StackPanel x:Name="DoingText" HorizontalAlignment="Center" Margin="0,116,0,10">
+                <TextBlock Text="Doing" HorizontalAlignment="center" FontSize="50"></TextBlock>
                 <StackPanel x:Name="DoingBlock" HorizontalAlignment="Center">
                     <Button x:Name="firstDoing" Width="400" Height="150" Margin="25" Foreground="Black">
 
@@ -45,8 +53,8 @@
             </StackPanel>
         </Grid>
         <Grid x:Name="Done" Grid.Column="2" Grid.Row="0" BorderBrush="White" BorderThickness="2">
-            <StackPanel x:Name="DoneText" HorizontalAlignment="Center">
-                <TextBlock Text="Done" FontSize="50"></TextBlock>
+            <StackPanel x:Name="DoneText" HorizontalAlignment="Center" Margin="0,116,0,10">
+                <TextBlock Text="Done" HorizontalAlignment="center" FontSize="50"></TextBlock>
                 <StackPanel x:Name="DoneBlock" HorizontalAlignment="Center">
                     <Button x:Name="firstDone" Width="400" Height="150" Margin="25" Foreground="Black">
 

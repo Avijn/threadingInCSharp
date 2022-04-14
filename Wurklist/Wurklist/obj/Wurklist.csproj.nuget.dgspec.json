@@ -1,21 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\threadingInCSharp\\Wurklist\\Wurklist\\Wurklist.csproj": {}
+    "C:\\Repos\\ThreadingInCSharp\\threadingInCSharp\\Wurklist\\Wurklist\\Wurklist.csproj": {}
   },
   "projects": {
-    "C:\\threadingInCSharp\\Wurklist\\Wurklist\\Wurklist.csproj": {
+    "C:\\Repos\\ThreadingInCSharp\\threadingInCSharp\\Wurklist\\Wurklist\\Wurklist.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\threadingInCSharp\\Wurklist\\Wurklist\\Wurklist.csproj",
+        "projectUniqueName": "C:\\Repos\\ThreadingInCSharp\\threadingInCSharp\\Wurklist\\Wurklist\\Wurklist.csproj",
         "projectName": "Wurklist",
-        "projectPath": "C:\\threadingInCSharp\\Wurklist\\Wurklist\\Wurklist.csproj",
+        "projectPath": "C:\\Repos\\ThreadingInCSharp\\threadingInCSharp\\Wurklist\\Wurklist\\Wurklist.csproj",
         "packagesPath": "C:\\Users\\Arjan\\.nuget\\packages\\",
-        "outputPath": "C:\\threadingInCSharp\\Wurklist\\Wurklist\\obj\\",
+        "outputPath": "C:\\Repos\\ThreadingInCSharp\\threadingInCSharp\\Wurklist\\Wurklist\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
-          "F:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
         ],
         "configFilePaths": [

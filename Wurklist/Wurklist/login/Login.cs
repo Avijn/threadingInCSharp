@@ -32,7 +32,7 @@ namespace Wurklist.login
 
                 //test
                 List<int> ids = _dbcalls.GetProjectIdsByUserId(userId);
-                List<List<KanbanProject>> allProjectsFromUser = new List<List<KanbanProject>>(); 
+                List<KanbanProject> allProjectsFromUser = new List<KanbanProject>(); 
 
                 foreach(int id in ids)
                 {

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sdbjBV5HoWweqCp3Lqc8vweVp6QaEvX71PCsQT6cfHfhXQfUDTkz9ZvYd28UyD4eQDQiEbolyE87Bg5YGAR9Gw==",
+  "dgSpecHash": "18vBKDTjUQQxBhiVt1T9ZL2S6tkVPXIQiNIA53nSEe6HI70UIOyU3/ZT5M/0ajbtFuCoA1LEivHHlNJ3+SAFhw==",
   "success": true,
-  "projectFilePath": "C:\\threadingInCSharp\\Wurklist\\Wurklist\\Wurklist.csproj",
+  "projectFilePath": "C:\\Repos\\ThreadingInCSharp\\threadingInCSharp\\Wurklist\\Wurklist\\Wurklist.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Arjan\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\Arjan\\.nuget\\packages\\google.protobuf\\3.14.0\\google.protobuf.3.14.0.nupkg.sha512",

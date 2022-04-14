@@ -12,7 +12,7 @@
     <Grid>
         <UI:CustomButton></UI:CustomButton>
         <StackPanel>
-            <Button Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked"/>
+            <Button Content="Login" Click="ShowPopupOffsetClicked"/>
             <Button Content="Button" Click="GotoKanbanBoard"/>
         </StackPanel>
         <Popup VerticalOffset="10" HorizontalOffset="20" x:Name="StandardPopup" Height="500" Width="400">

@@ -142,7 +142,7 @@ namespace Wurklist.DataBase
             }
         }
 
-        public async Task<List<KanbanProject>> GetProjectsByProjectId(int id)
+        public async Task<KanbanProject> GetProjectsByProjectId(int id)
         {
             try
             {
@@ -170,10 +170,8 @@ namespace Wurklist.DataBase
                         ));
                     }
                 }
-
                 conn.Close();
-
-                return kanbanProjects;
+                return kanbanProjects[0];
             }
             catch(Exception)
             {
@@ -200,12 +198,13 @@ namespace Wurklist.DataBase
                     if (result.HasRows)
                     {
                         customTasks.Add(new TaskItem(
+                            result.GetInt32("ID"),
                             result.GetString("Name"),
                             result.GetString("Description"),
                             result.GetString("Deadline"),
-                            result.GetInt16("ProjectId"),
-                            result.GetInt16("UserId"),
-                            result.GetInt16("LastEditedByUserId"),
+                            result.GetInt32("ProjectId"),
+                            result.GetInt32("UserId"),
+                            result.GetInt32("LastEditedByUserId"),
                             result.GetString("ItemCreated")
                         ));
                     }

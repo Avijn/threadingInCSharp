@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Wurklist.DataBase;
 using Wurklist.Models;
+using Wurklist.UI;
 
 namespace Wurklist.Kanban
 {
@@ -49,26 +50,48 @@ namespace Wurklist.Kanban
         public void FillBtn(Button button)
         {
             button.Content = "Taak1";
-            button.FontSize = 20;            
+            button.FontSize = 20;
         }
 
-        public void AddBtn(TaskItem kanbanItem)
+        public void AddBtn(TaskItem item)
         {
-            Button button = new Button();
-            button.Content = kanbanItem.Name;
+            CustomButton button = new CustomButton();
+            button.Content = item.Name;
+            button.taskItem = item;
             button.FontSize = 20;
             button.Click += ShowKanbanItem_Click;
             button.Width = 400;
-            button.Height = 150;
+            button.Height = 100;
             ToDoBlock.Children.Add(button);
+        }
+
+        public async void AddProjects()
+        {
+            List<int> ids = _dbcalls.GetProjectIdsByUserId(UserId);
+            List<KanbanProject> projects = new List<KanbanProject>();
+            foreach (int id in ids) {
+                projects.Add(await _dbcalls.GetProjectsByProjectId(id));
+            }
+
+            foreach (KanbanProject project in projects)
+            {
+                CustomButton button = new CustomButton();
+                button.Content = project.Name;
+                button.Width = 400;
+                button.Height = 100;
+                ToDoBlock.Children.Add(button);
+            }
+
         }
 
         private async void ShowKanbanItem_Click(object sender, RoutedEventArgs e)
         {
+            CustomButton button = (CustomButton)sender;
+            TaskItem taskItem = button.GetTaskItem();
             ContentDialog showKanbanItem = new ContentDialog
             {
-                Title = "Subscribe to App Service?",
-                Content = "Listen, watch, and play in high definition for only $9.99/month. Free to try, cancel anytime.",
+                Title = taskItem.Name,
+                Content = taskItem.Description,
                 CloseButtonText = "Close"
             };
 
@@ -78,12 +101,33 @@ namespace Wurklist.Kanban
         public async void GetAllProjectTasksFromUser()
         {
             List<int> ids = _dbcalls.GetProjectIdsByUserId(UserId);
-            List<List<KanbanProject>> allProjectsFromUser = new List<List<KanbanProject>>();
+            List<KanbanProject> allProjectsFromUser = new List<KanbanProject>();
 
             foreach (int id in ids)
             {
                 allProjectsFromUser.Add(await _dbcalls.GetProjectsByProjectId(id));
             }
+        }
+
+        public void LoadProject(object sender, RoutedEventArgs e)
+        {
+            List<TaskItem> items = _dbcalls.GetKanbanItemsByProjectId(1);
+
+            foreach(TaskItem item in items)
+            {
+                AddBtn(item);
+            }
+        }
+
+
+        public void ShowPopupAddTask(object sender, RoutedEventArgs e)
+        {
+            if (!AddTaskPopup.IsOpen) { AddTaskPopup.IsOpen = true; }
+        }
+
+        private void ClosePopupAddTask(object sender, RoutedEventArgs e)
+        {
+            if (AddTaskPopup.IsOpen) { AddTaskPopup.IsOpen = false; }
         }
     }
 }

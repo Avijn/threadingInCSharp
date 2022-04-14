@@ -1,1 +1,1 @@
-C:\threadingInCSharp\Wurklist\Wurklist\Wurklist.csproj;x64
+C:\Repos\ThreadingInCSharp\threadingInCSharp\Wurklist\Wurklist\Wurklist.csproj;x64
