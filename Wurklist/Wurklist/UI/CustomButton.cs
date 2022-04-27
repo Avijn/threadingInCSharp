@@ -14,12 +14,13 @@ using Wurklist.Models;
 
 namespace Wurklist.UI
 {
-    class CustomButton : Button
+    public class CustomButton : Button
     {
         public TaskItem taskItem { get; set; }
+
         public CustomButton()
         {
-            this.Content = "Keutel";
+            
         }
 
         public TaskItem GetTaskItem()

@@ -12,31 +12,31 @@
     <Grid>
         <UI:CustomButton></UI:CustomButton>
         <StackPanel>
-            <Button x:ConnectionId='15' Content="Show Popup (using Offset)"                               />
+            <Button x:ConnectionId='15' Content="Login"                               />
             <Button x:ConnectionId='16' Content="Button"                        />
         </StackPanel>
         <Popup x:ConnectionId='2' VerticalOffset="10" HorizontalOffset="20" x:Name="StandardPopup" Height="500" Width="400">
             <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
                 Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
-                BorderThickness="2" Width="400" Height="500">
+                BorderThickness="2" Width="400" Height="400">
                 <StackPanel>
                     <StackPanel x:ConnectionId='3' x:Name="login" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Text="Simple Popup" FontSize="24.667" HorizontalAlignment="Center"/>
-                        <Button x:ConnectionId='10' Content="Close"                           HorizontalAlignment="Center"/>
                         <TextBlock Text="Login" FontSize="24.667" HorizontalAlignment="Center"/>
-                        <TextBox x:ConnectionId='11' x:Name="Username"></TextBox>
-                        <PasswordBox x:ConnectionId='12' x:Name="Password" Width="200" MaxLength="16"                                              />
+                        <TextBox x:ConnectionId='11' x:Name="Username" PlaceholderText="Username"></TextBox>
+                        <PasswordBox x:ConnectionId='12' x:Name="Password" PlaceholderText="Password" Width="200" MaxLength="16"                                              />
                         <TextBlock x:ConnectionId='13' x:Name="statusText" Margin="10" HorizontalAlignment="Center" />
                         <Button x:ConnectionId='14' x:Name="Login"                                  >Login!</Button>
                     </StackPanel>
                     <StackPanel x:ConnectionId='4' x:Name="register" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Text="Simple Popup" FontSize="24.667" HorizontalAlignment="Center"/>
-                        <TextBox x:ConnectionId='5' x:Name="RegisterUsername"></TextBox>
-                        <PasswordBox x:ConnectionId='6' x:Name="RegisterPassword" Width="200" MaxLength="16"                                              />
-                        <TextBox x:ConnectionId='7' x:Name="RegisterEmail"></TextBox>
-                        <TextBox x:ConnectionId='8' x:Name="RegisterDateOfBirth"></TextBox>
-                        <Button x:ConnectionId='9' x:Name="RegisterLogin"                                     >Register!</Button>
+                        <TextBlock Text="Register" FontSize="24.667" HorizontalAlignment="Center"/>
+                        <TextBox x:ConnectionId='6' x:Name="RegisterUsername" PlaceholderText="Username"></TextBox>
+                        <PasswordBox x:ConnectionId='7' x:Name="RegisterPassword" PlaceholderText="Password" Width="200" MaxLength="16"                                              />
+                        <TextBox x:ConnectionId='8' x:Name="RegisterEmail" PlaceholderText="Email"></TextBox>
+                        <TextBox x:ConnectionId='9' x:Name="RegisterDateOfBirth" PlaceholderText="dd-mm-yyyy"></TextBox>
+                        <Button x:ConnectionId='10' x:Name="RegisterLogin"                                     >Register!</Button>
                     </StackPanel>
+
+                    <Button x:ConnectionId='5' Content="Close"                           />
                 </StackPanel>
             </Border>
         </Popup>
