@@ -10,10 +10,9 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <UI:CustomButton></UI:CustomButton>
         <StackPanel>
             <Button x:ConnectionId='15' Content="Login"                               />
-            <Button x:ConnectionId='16' Content="Button"                        />
+            <Button x:ConnectionId='16' Content="Kanbanboard"                        />
         </StackPanel>
         <Popup x:ConnectionId='2' VerticalOffset="10" HorizontalOffset="20" x:Name="StandardPopup" Height="500" Width="400">
             <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
