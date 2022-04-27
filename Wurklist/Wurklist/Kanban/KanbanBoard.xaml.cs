@@ -212,5 +212,10 @@ namespace Wurklist.Kanban
                 AddBtn(newTaskItem);
             }
         }
+
+        private void ReturnToHome_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage));
+        }
     }
 }

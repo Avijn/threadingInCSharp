@@ -18,7 +18,10 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Button Background="darkgray" Foreground="White" FontSize="20" Height="100" Width="100" HorizontalAlignment="Right" Grid.Column="2" Margin="0,0,10,0" VerticalAlignment="Top" Click="ShowPopupAddTask">
+        <Button x:Name="ReturnToHome" Background="darkgray" Foreground="White" FontSize="20" Height="100" Width="100" HorizontalAlignment="Left" Grid.Column="0" Margin="0,0,10,0" VerticalAlignment="Top" Click="ReturnToHome_Click">
+            Return
+        </Button>
+        <Button x:Name="AddTask" Background="darkgray" Foreground="White" FontSize="20" Height="100" Width="100" HorizontalAlignment="Right" Grid.Column="2" Margin="0,0,10,0" VerticalAlignment="Top" Click="ShowPopupAddTask">
             Add Task
         </Button>
 
