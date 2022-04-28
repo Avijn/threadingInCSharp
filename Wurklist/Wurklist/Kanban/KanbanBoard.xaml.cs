@@ -30,11 +30,13 @@ namespace Wurklist.Kanban
         public KanbanBoard()
         {
             this.InitializeComponent();
-            DateTime datum1 = new DateTime(2008, 3, 1, 7, 0, 0);
+            _dbcalls = new DBCalls();
+            LoadProject();
+
+            /*DateTime datum1 = new DateTime(2008, 3, 1, 7, 0, 0);
             DateTime datum2 = new DateTime(2009, 3, 1, 7, 0, 0);
             TaskItem kanban = new TaskItem("Taak1", "Beschrijving1", "02-02-2222", 1, 1, 1, "02-02-2222");
-            AddBtn(kanban);
-            _dbcalls = new DBCalls();
+            AddBtn(kanban);*/
         }
 
         public void SetUserId(int userid)
@@ -161,7 +163,7 @@ namespace Wurklist.Kanban
 
         public async void GetAllProjectTasksFromUser()
         {
-            List<int> ids = _dbcalls.GetProjectIdsByUserId(UserId);
+            List<int> ids = _dbcalls.GetProjectIdsByUserId(1);
             List<KanbanProject> allProjectsFromUser = new List<KanbanProject>();
 
             foreach (int id in ids)
@@ -170,7 +172,7 @@ namespace Wurklist.Kanban
             }
         }
 
-        public void LoadProject(object sender, RoutedEventArgs e)
+        public void LoadProject()
         {
             List<TaskItem> items = _dbcalls.GetKanbanItemsByProjectId(1);
 
@@ -204,12 +206,26 @@ namespace Wurklist.Kanban
                 CloseButtonText = "Close"
             };
 
-            ContentDialogResult result = await showKanbanItem.ShowAsync();
+            ContentDialogResult showKanbanItemResult = await showKanbanItem.ShowAsync();
 
-            if (result == ContentDialogResult.Primary)
+            if (showKanbanItemResult == ContentDialogResult.Primary)
             {
-                TaskItem newTaskItem = new TaskItem(taskItemName.Text, taskItemDescription.Text, taskItemDeadline.Date.ToString(), Int32.Parse(taskItemProjectID.Text), 1, 1, DateTime.Now.ToString());
-                AddBtn(newTaskItem);
+                if(taskItemName.Text.Equals("") || taskItemDescription.Text.Equals("") || taskItemDeadline.Date.ToString().Equals("") || Int32.Parse(taskItemProjectID.Text).Equals("") || DateTime.Now.ToString().Equals(""))
+                {
+                    ContentDialog warningMessage = new ContentDialog
+                    {
+                        Title = "Not all fields are filled in, closing..",
+                        CloseButtonText = "Ok"
+                    };
+
+                    ContentDialogResult warningMessageResult = await warningMessage.ShowAsync();
+                }
+                else
+                {
+                    TaskItem newTaskItem = new TaskItem(taskItemName.Text, taskItemDescription.Text, taskItemDeadline.Date.DateTime.ToString(), Int32.Parse(taskItemProjectID.Text), 1, 1, DateTime.Now.ToString());
+                    _dbcalls.InsertKanbanTask(newTaskItem);
+                    AddBtn(newTaskItem);
+                }
             }
         }
 

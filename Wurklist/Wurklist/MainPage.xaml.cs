@@ -68,6 +68,7 @@ namespace Wurklist
             kanban.SetUserId(UserId);
             kanban.GetAllProjectTasksFromUser();
         }
+
         private void button_RegisterButtonClicked(object sender, RoutedEventArgs e)
         {
             User user = new User(RegisterUsername.Text, RegisterPassword.Password, RegisterEmail.Text, RegisterDateOfBirth.Text);
@@ -75,10 +76,9 @@ namespace Wurklist
             _login.Register(user);
         }
 
-
         private void GotoKanbanBoard(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Kanban.KanbanBoard));
+            Frame.Navigate(typeof(Kanban.KanbanBoard), kanban);
         }
     }
 }

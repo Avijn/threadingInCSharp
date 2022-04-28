@@ -290,17 +290,17 @@ namespace Wurklist.DataBase
         {
             try
             {
-                string sql = @"INSERT INTO Task ('Name', 'Description', 'Activity', 'Deadline', 'ProjectId', 'UserId', 'Priority', 'LastEditedByUserId', 'ItemCreated') VALUES (@name, @description, @activity, @deadline, @projectid, @userid, @priority, @lasteditedbyuserid, @ItemCreated,); ";
+                string sql = @"INSERT INTO Task (Name, Description, Activity, ProjectId, Priority, UserId, Deadline, LastEditedByUserId, ItemCreated) VALUES (@name, @description, @activity, @projectid, @priority, @userid, @deadline, @lasteditedbyuserid, @ItemCreated); ";
                 conn.Open();
                 cmd = new MySqlCommand(sql, conn);
 
                 cmd.Parameters.AddWithValue("@name", item.Name);
                 cmd.Parameters.AddWithValue("@description", item.Description);
-                cmd.Parameters.AddWithValue("@activity", item.Activity);
-                cmd.Parameters.AddWithValue("@deadline", item.Activity);
+                cmd.Parameters.AddWithValue("@activity", item.Activity.ToString());
+                cmd.Parameters.AddWithValue("@deadline", item.Deadline);
                 cmd.Parameters.AddWithValue("@projectid", item.ProjectId);
-                cmd.Parameters.AddWithValue("@userid", item.ProjectId);
-                cmd.Parameters.AddWithValue("@priority", item.Deadline);
+                cmd.Parameters.AddWithValue("@userid", item.UserId);
+                cmd.Parameters.AddWithValue("@priority", item.itemPriority.ToString());
                 cmd.Parameters.AddWithValue("@lasteditedbyuserid", item.LastEditedByUserId);
                 cmd.Parameters.AddWithValue("@ItemCreated", item.Created);
 
