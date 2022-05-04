@@ -327,6 +327,10 @@ namespace Wurklist.DataBase
                 cmd.Parameters.AddWithValue("@name", project.Name);
 
 
+                cmd.Prepare();
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
                 return true;
             }
             catch (Exception)
@@ -344,7 +348,7 @@ namespace Wurklist.DataBase
         {
             try
             {
-                string sql = @"UPDATE `test`.`task` set `Priority` = @priority , `Activity` = @activity WHERE `id` = @id";
+                string sql = @"UPDATE `task` set `Priority` = @priority , `Activity` = @activity WHERE `id` = @id";
                 conn.Open();
                 cmd = new MySqlCommand(sql, conn);
 
@@ -352,6 +356,10 @@ namespace Wurklist.DataBase
                 cmd.Parameters.AddWithValue("@priority", task.getItemPriority());
                 cmd.Parameters.AddWithValue("@activity", task.getItemPosition());
 
+                cmd.Prepare();
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
                 return true;
             }
             catch (Exception)
@@ -363,6 +371,31 @@ namespace Wurklist.DataBase
         ////
         /// Delete statements
         ////
+        ///
+
+        public bool DeleteProject(KanbanProject project)
+        {
+            try
+            {
+                string sql = @"DELETE FROM `project` WHERE ID = @id";
+                conn.Open();
+
+                cmd = new MySqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("@id", project.ID);
+
+                cmd.Prepare();
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        }
 
     }
 }
