@@ -179,7 +179,6 @@ namespace Wurklist.DataBase
             }
         }
     
-
         public List<TaskItem> GetKanbanItemsByProjectId(int id)
         {
             try
@@ -339,7 +338,6 @@ namespace Wurklist.DataBase
             }
         }
 
-
         ////
         /// Update statements
         ////
@@ -353,8 +351,8 @@ namespace Wurklist.DataBase
                 cmd = new MySqlCommand(sql, conn);
 
                 cmd.Parameters.AddWithValue("@id", task.ID);
-                cmd.Parameters.AddWithValue("@priority", task.getItemPriority());
-                cmd.Parameters.AddWithValue("@activity", task.getItemPosition());
+                cmd.Parameters.AddWithValue("@priority", task.itemPriority.ToString());
+                cmd.Parameters.AddWithValue("@activity", task.Activity.ToString());
 
                 cmd.Prepare();
                 cmd.ExecuteNonQuery();
@@ -395,6 +393,28 @@ namespace Wurklist.DataBase
                 throw;
             }
         }
+
+        public bool DeleteTask(TaskItem task)
+        {
+            try
+            {
+                string sql = @"DELETE FROM `task` WHERE ID = @id";
+                conn.Open();
+
+                cmd = new MySqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("@id", task.ID);
+
+                cmd.Prepare();
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
     }
