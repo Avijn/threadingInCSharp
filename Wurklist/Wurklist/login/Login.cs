@@ -40,6 +40,7 @@ namespace Wurklist.login
                 }
                 //
 
+                var userid = User.GetUserId();
 
 
                 return userId;

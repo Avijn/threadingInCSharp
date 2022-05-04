@@ -13,6 +13,7 @@
         <StackPanel>
             <Button Content="Login" Click="ShowPopupOffsetClicked"/>
             <Button Content="Kanbanboard" Click="GotoKanbanBoard"/>
+            <TextBlock x:Name="Textblock" TextWrapping="Wrap" Text="" Height="167" Width="1085"/>
         </StackPanel>
         <Popup VerticalOffset="10" HorizontalOffset="20" x:Name="StandardPopup" Height="500" Width="400">
             <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 

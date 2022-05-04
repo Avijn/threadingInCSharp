@@ -334,12 +334,31 @@ namespace Wurklist.DataBase
                 throw;
             }
         }
-          
+
 
         ////
         /// Update statements
         ////
 
+        public bool UpdateStatus(TaskItem task)
+        {
+            try
+            {
+                string sql = @"UPDATE `test`.`task` set `Priority` = @priority , `Activity` = @activity WHERE `id` = @id";
+                conn.Open();
+                cmd = new MySqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("@id", task.ID);
+                cmd.Parameters.AddWithValue("@priority", task.getItemPriority());
+                cmd.Parameters.AddWithValue("@activity", task.getItemPosition());
+
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
         ////
         /// Delete statements

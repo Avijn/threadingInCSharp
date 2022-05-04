@@ -67,6 +67,8 @@ namespace Wurklist
             UserId = await _login.TryLoginAsync(user);
             kanban.SetUserId(UserId);
             kanban.GetAllProjectTasksFromUser();
+
+            Textblock.Text = "Logged in as : \n ID : " + UserId.ToString() + " \n Username : " + user.Name;
         }
 
         private void button_RegisterButtonClicked(object sender, RoutedEventArgs e)
