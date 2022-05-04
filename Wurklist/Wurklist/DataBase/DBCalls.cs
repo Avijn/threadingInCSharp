@@ -30,6 +30,12 @@ namespace Wurklist.DataBase
          * https://stackoverflow.com/questions/12408693/how-to-read-and-print-out-data-from-mysql-in-c-sharp
          */
 
+        /// <summary>
+        /// Get all Task that are bound to a specific user id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> List<CustomTask> </returns>   
+
         public List<CustomTask> GetCustomTasksUser(int id)
         {
             try
@@ -67,22 +73,34 @@ namespace Wurklist.DataBase
             }
         }
 
-        public void GetCustomRemindersUser(int id)
-        {
-            try
-            {
-                string sql = @"SELECT * FROM Reminder WHERE UserId = @id";
-                cmd = new MySqlCommand(sql, conn);
-                cmd.Prepare();
-                cmd.Parameters.AddWithValue("@id", id);
+        /// <summary>
+        /// Get all Reminders that are bound to a specific user id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> true </returns>   
 
-                var reslut = cmd.ExecuteReaderAsync();
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
+        //public void GetCustomRemindersUser(int id)
+        //{
+        //    try
+        //    {
+        //        string sql = @"SELECT * FROM Reminder WHERE UserId = @id";
+        //        cmd = new MySqlCommand(sql, conn);
+        //        cmd.Prepare();
+        //        cmd.Parameters.AddWithValue("@id", id);
+
+        //        var reslut = cmd.ExecuteReaderAsync();
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw e;
+        //    }
+        //}
+
+        /// <summary>
+        /// Checks if the login and password are a valid combination
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns> userid </returns> 
 
         public int CheckLogin(User user)
         {
@@ -98,8 +116,8 @@ namespace Wurklist.DataBase
                 cmd.Prepare();
 
                 MySqlDataReader result = cmd.ExecuteReader();
-                while(result.Read())
-                { 
+                while (result.Read())
+                {
                     userId = result.GetInt32("Id");
                 }
                 conn.Close();
@@ -110,6 +128,12 @@ namespace Wurklist.DataBase
                 throw e;
             }
         }
+
+        /// <summary>
+        /// Gets all the project Id that are bound to a specific userId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> List<int> </returns> 
 
         public List<int> GetProjectIdsByUserId(int id)
         {
@@ -142,6 +166,12 @@ namespace Wurklist.DataBase
             }
         }
 
+        /// <summary>
+        /// Get a specific project based on a projectId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> Task<Kanbanproject> </returns> 
+
         public async Task<KanbanProject> GetProjectsByProjectId(int id)
         {
             try
@@ -173,12 +203,18 @@ namespace Wurklist.DataBase
                 conn.Close();
                 return kanbanProjects[0];
             }
-            catch(Exception)
+            catch (Exception)
             {
                 throw;
             }
         }
-    
+
+        /// <summary>
+        /// Get all Tasks that are bound to a specific projectid
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> List<TaskItem> </returns> 
+
         public List<TaskItem> GetKanbanItemsByProjectId(int id)
         {
             try
@@ -216,6 +252,12 @@ namespace Wurklist.DataBase
                 throw;
             }
         }
+
+        /// <summary>
+        /// Get all Tasks that are bound to a specific projectid
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns> List<User> </returns> 
 
         public List<User> GetUsersByProjectId(int id)
         {
@@ -256,12 +298,18 @@ namespace Wurklist.DataBase
         /// Insert statements
         ////
 
+
+        /// <summary>
+        /// Creates a new user
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns> bool </returns>   
         public bool InsertUser(User user)
         {
             try
             {
                 string sql = @"INSERT INTO User (`Name`, `Password`, `Email`, `DateOfBirth`) VALUES (@name, @Password, @Email, @Dateofbirth);";
-                
+
                 conn.Open();
                 cmd = new MySqlCommand(sql, conn);
 
@@ -282,9 +330,42 @@ namespace Wurklist.DataBase
             }
         }
 
-        /*
-         * @params TaskItem is a task that is made either in the kanbanboard or in the agenda
-         */
+        /// <summary>
+        /// Creates a row that binds a user to a project
+        /// </summary>
+        /// <param name="project"></param>
+        /// <returns> bool </returns>       
+
+        public bool InsertUserInGroup(KanbanProject project)
+        {
+            try
+            {
+                string sql = @"INSERT INTO projectgroup (`ProjectId`, `Userid`) VALUES (@projectId, @usserId);";
+
+                conn.Open();
+                cmd = new MySqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("@name", User.GetUserId());
+                cmd.Parameters.AddWithValue("@Password", project.ID);
+
+                cmd.Prepare();
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Create a new Task
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns> bool </returns> 
+
         public bool InsertKanbanTask(TaskItem item)
         {
             try
@@ -315,16 +396,26 @@ namespace Wurklist.DataBase
             }
         }
 
+
+        /// <summary>
+        /// Create a new kanban project
+        /// </summary>
+        /// <param name="project"></param>
+        /// <returns> bool </returns>
+        
         public bool InsertProject(KanbanProject project)
         {
             try
             {
-                string sql = @"INSERT INTO Project('Name', 'deadline') VALUES (@name, @deadline);";
+                string sql = @"INSERT INTO Project(`Name`, `description`, `CreatedByUserId`, `Created`, `deadline`) VALUES (@name, @description, @createdbyuserid, @created, @deadline);";
                 conn.Open();
                 cmd = new MySqlCommand(sql, conn);
 
                 cmd.Parameters.AddWithValue("@name", project.Name);
-
+                cmd.Parameters.AddWithValue("@description", project.Description);
+                cmd.Parameters.AddWithValue("@createdbyuserid", project.CreatedByUserId);
+                cmd.Parameters.AddWithValue("@created", project.Created);
+                cmd.Parameters.AddWithValue("@deadline", project.Deadline);
 
                 cmd.Prepare();
                 cmd.ExecuteNonQuery();
@@ -342,17 +433,24 @@ namespace Wurklist.DataBase
         /// Update statements
         ////
 
-        public bool UpdateStatus(TaskItem task)
+        /// <summary>
+        /// Updates the activity/priority of a task
+        /// </summary>
+        /// <param name="task"></param>
+        /// <returns> bool </returns>
+
+        public bool UpdateTask(TaskItem task)
         {
             try
             {
-                string sql = @"UPDATE `task` set `Priority` = @priority , `Activity` = @activity WHERE `id` = @id";
+                string sql = @"UPDATE `task` set `Priority` = @priority , `Activity` = @activity , `LastEditedByUserId` = @LastEditedByUserId WHERE `id` = @id";
                 conn.Open();
                 cmd = new MySqlCommand(sql, conn);
 
                 cmd.Parameters.AddWithValue("@id", task.ID);
                 cmd.Parameters.AddWithValue("@priority", task.itemPriority.ToString());
                 cmd.Parameters.AddWithValue("@activity", task.Activity.ToString());
+                cmd.Parameters.AddWithValue("@LastEditedByUserId", task.LastEditedByUserId);
 
                 cmd.Prepare();
                 cmd.ExecuteNonQuery();
@@ -369,7 +467,13 @@ namespace Wurklist.DataBase
         ////
         /// Delete statements
         ////
-        ///
+
+
+        /// <summary>
+        /// Deletes a project
+        /// </summary>
+        /// <param name="project"></param>
+        /// <returns> bool </returns>
 
         public bool DeleteProject(KanbanProject project)
         {
@@ -393,6 +497,13 @@ namespace Wurklist.DataBase
                 throw;
             }
         }
+
+
+        /// <summary>
+        /// Deletes a Task
+        /// </summary>
+        /// <param name="task"></param>
+        /// <returns> bool </returns>
 
         public bool DeleteTask(TaskItem task)
         {
