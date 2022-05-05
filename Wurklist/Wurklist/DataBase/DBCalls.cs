@@ -53,6 +53,7 @@ namespace Wurklist.DataBase
                 while (result.Read())
                 {
                     customTasks.Add(new CustomTask(
+                        result.GetInt16("Id"),
                         result.GetString("Name"),
                         result.GetString("Description"),
                         result.GetString("Activity"),
@@ -233,6 +234,7 @@ namespace Wurklist.DataBase
                     if (result.HasRows)
                     {
                         customTasks.Add(new CustomTask(
+                            result.GetInt16("Id"),
                             result.GetString("Name"),
                             result.GetString("Description"),
                             result.GetString("Activity"),
@@ -444,14 +446,14 @@ namespace Wurklist.DataBase
         {
             try
             {
-                string sql = @"UPDATE `task` set `Priority` = @priority , `Activity` = @activity , `LastEditedByUserId` = @LastEditedByUserId WHERE `id` = @id";
+                string sql = @"UPDATE `task` set `Priority` = @priority , `Activity` = @activity , `LastEditedByUserId` = @lastEditedByUserId WHERE `id` = @id";
                 conn.Open();
                 cmd = new MySqlCommand(sql, conn);
 
                 cmd.Parameters.AddWithValue("@id", task.ID);
                 cmd.Parameters.AddWithValue("@priority", task.itemPriority.ToString());
                 cmd.Parameters.AddWithValue("@activity", task.Activity.ToString());
-                cmd.Parameters.AddWithValue("@LastEditedByUserId", task.LastEditedByUserId);
+                cmd.Parameters.AddWithValue("@lastEditedByUserId", task.LastEditedByUserId);
 
                 cmd.Prepare();
                 cmd.ExecuteNonQuery();

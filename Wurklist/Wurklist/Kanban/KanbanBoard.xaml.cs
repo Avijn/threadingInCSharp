@@ -86,9 +86,9 @@ namespace Wurklist.Kanban
 
         public void MoveBtn(CustomButton btn, KanbanItemPositions positions)
         {
-            CustomButton tempCustomButton = new CustomButton();
-            tempCustomButton = btn;
-            switch(positions)
+            btn.taskItem.setItemPosition(positions);
+            _dbcalls.UpdateTask(btn.taskItem);
+            switch (positions)
             {
                 case KanbanItemPositions.ToDo:
                     DoingBlock.Children.Remove(btn);
@@ -131,53 +131,67 @@ namespace Wurklist.Kanban
         private async void ShowKanbanItem_Click(object sender, RoutedEventArgs e)
         {
             CustomButton button = (CustomButton)sender;
-            TaskItem taskItem = button.GetTaskItem();
-            ContentDialog showKanbanItem = new ContentDialog
-            {
-                Title = taskItem.Name,
-                Content = taskItem.Description,
-                PrimaryButtonText = "<- Move",
-                SecondaryButtonText = "Move ->",
-            };
+            ContentDialog showKanbanItem = new ContentDialog();
+            StackPanel stackPanel = new StackPanel();
+            TextBlock taskItemName = new TextBlock();
+            CustomButton deleteTaskItem = new CustomButton();
+
+            taskItemName.Text = button.taskItem.Name;
+            deleteTaskItem.Content = "Delete";
+            deleteTaskItem.taskItem = button.taskItem;
+            deleteTaskItem.contentDialog = showKanbanItem;
+            deleteTaskItem.Click += DeleteTaskItem_Click;
+
+            stackPanel.Children.Add(taskItemName);
+            stackPanel.Children.Add(deleteTaskItem);
+
+            showKanbanItem.Title = stackPanel;
+            showKanbanItem.Content = button.taskItem.Description;
+            showKanbanItem.PrimaryButtonText = "<- Move";
+            showKanbanItem.SecondaryButtonText = "Move ->";
             
             ContentDialogResult result = await showKanbanItem.ShowAsync();
 
             if (result == ContentDialogResult.Primary)
             {
-                switch(taskItem.getItemPosition())
+                switch(button.taskItem.getItemPosition())
                 {
                     case KanbanItemPositions.ToDo:
                         break;
                     case KanbanItemPositions.Doing:
                         button.taskItem.setItemPosition(KanbanItemPositions.ToDo);
-                        _dbcalls.UpdateTask(button.GetTaskItem());
                         MoveBtn(button, KanbanItemPositions.ToDo);
                         break;
                     case KanbanItemPositions.Done:
                         button.taskItem.setItemPosition(KanbanItemPositions.Doing);
-                        _dbcalls.UpdateTask(button.GetTaskItem());
                         MoveBtn(button, KanbanItemPositions.Doing);
                         break;
                 }
             }
             else if (result == ContentDialogResult.Secondary)
             {
-                switch (taskItem.getItemPosition())
+                switch (button.taskItem.getItemPosition())
                 {
                     case KanbanItemPositions.ToDo:
                         button.taskItem.setItemPosition(KanbanItemPositions.Doing);
-                        _dbcalls.UpdateTask(button.GetTaskItem());
                         MoveBtn(button, KanbanItemPositions.Doing);
                         break;
                     case KanbanItemPositions.Doing:
                         button.taskItem.setItemPosition(KanbanItemPositions.Done);
-                        _dbcalls.UpdateTask(button.GetTaskItem());
                         MoveBtn(button, KanbanItemPositions.Done);
                         break;
                     case KanbanItemPositions.Done:
                         break;
                 }
             }
+        }
+
+        private void DeleteTaskItem_Click(object sender, RoutedEventArgs e)
+        {
+            CustomButton button = (CustomButton)sender;
+            _dbcalls.DeleteTask(button.GetTaskItem());
+            Frame.Navigate(typeof(KanbanBoard));
+            button.contentDialog.Hide();
         }
 
         public async void GetAllProjectTasksFromUser()

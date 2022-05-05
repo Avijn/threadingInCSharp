@@ -3,6 +3,7 @@
     public class CustomTask : TaskItem
     {
         public CustomTask(
+            int id,
             string name,
             string description,
             string activity,
@@ -12,8 +13,9 @@
             int? priority,
             int? lastEditedByUserId,
             string itemCreated
-            ) : base (name, description, deadline, projectId, userId, lastEditedByUserId, itemCreated)
+            ) : base (id, name, description, deadline, projectId, userId, lastEditedByUserId, itemCreated)
         {
+            ID = id;
             Name = name;
             Description = description;
             switch (activity)
