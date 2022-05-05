@@ -215,11 +215,11 @@ namespace Wurklist.DataBase
         /// <param name="id"></param>
         /// <returns> List<TaskItem> </returns> 
 
-        public List<TaskItem> GetKanbanItemsByProjectId(int id)
+        public List<CustomTask> GetKanbanItemsByProjectId(int id)
         {
             try
             {
-                List<TaskItem> customTasks = new List<TaskItem>();
+                List<CustomTask> customTasks = new List<CustomTask>();
                 string sql = @"SELECT * FROM Task WHERE ProjectId = @ProjectId";
                 conn.Open();
                 cmd = new MySqlCommand(sql, conn);
@@ -232,14 +232,15 @@ namespace Wurklist.DataBase
                 {
                     if (result.HasRows)
                     {
-                        customTasks.Add(new TaskItem(
-                            result.GetInt32("ID"),
+                        customTasks.Add(new CustomTask(
                             result.GetString("Name"),
                             result.GetString("Description"),
+                            result.GetString("Activity"),
                             result.GetString("Deadline"),
-                            result.GetInt32("ProjectId"),
-                            result.GetInt32("UserId"),
-                            result.GetInt32("LastEditedByUserId"),
+                            result.GetInt16("ProjectId"),
+                            result.GetInt16("UserId"),
+                            result.GetInt16("Priority"),
+                            result.GetInt16("LastEditedByUserId"),
                             result.GetString("ItemCreated")
                         ));
                     }
@@ -527,6 +528,5 @@ namespace Wurklist.DataBase
                 throw;
             }
         }
-
     }
 }

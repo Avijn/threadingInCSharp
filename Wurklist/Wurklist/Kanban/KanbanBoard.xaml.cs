@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using Wurklist.DataBase;
 using Wurklist.Models;
 using Wurklist.UI;
+using Wurklist.General;
 using static Wurklist.Models.TaskItem;
 
 namespace Wurklist.Kanban
@@ -26,17 +27,22 @@ namespace Wurklist.Kanban
     {
         private readonly DBCalls _dbcalls;
         private int UserId;
+        List<KanbanProject> allProjectsFromUser = new List<KanbanProject>();
 
         public KanbanBoard()
         {
             this.InitializeComponent();
             _dbcalls = new DBCalls();
-            LoadProject();
+            GetAllProjectTasksFromUser();
+            
 
-            /*DateTime datum1 = new DateTime(2008, 3, 1, 7, 0, 0);
-            DateTime datum2 = new DateTime(2009, 3, 1, 7, 0, 0);
-            TaskItem kanban = new TaskItem("Taak1", "Beschrijving1", "02-02-2222", 1, 1, 1, "02-02-2222");
-            AddBtn(kanban);*/
+            foreach (KanbanProject project in allProjectsFromUser)
+            {
+                ShowAllProjects.Items.Add(project.Name);
+                LoadProject(project.ID);
+            }
+
+            
         }
 
         public void SetUserId(int userid)
@@ -54,14 +60,28 @@ namespace Wurklist.Kanban
             CustomButton button = new CustomButton();
             button.Content = item.Name;
             button.taskItem = item;
-            button.taskItem.setItemPosition(KanbanItemPositions.ToDo);
-            button.taskItem.setItemPriority(KanbanItemPriority.Low);
+            button.GetTaskItem().setItemPosition(item.getItemPosition());
+            button.GetTaskItem().setItemPriority(item.getItemPriority());
             button.FontSize = 20;
             button.Click += ShowKanbanItem_Click;
             button.Width = 400;
             button.Height = 100;
             button.Margin = new Thickness(10);
-            ToDoBlock.Children.Add(button);
+            
+            switch (button.GetTaskItem().getItemPosition())
+            {
+                case KanbanItemPositions.ToDo:
+                    ToDoBlock.Children.Add(button);
+                    break;
+                case KanbanItemPositions.Doing:
+                    DoingBlock.Children.Add(button);
+                    break;
+                case KanbanItemPositions.Done:
+                    DoneBlock.Children.Add(button);
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void MoveBtn(CustomButton btn, KanbanItemPositions positions)
@@ -106,7 +126,6 @@ namespace Wurklist.Kanban
                 button.Height = 100;
                 ToDoBlock.Children.Add(button);
             }
-
         }
 
         private async void ShowKanbanItem_Click(object sender, RoutedEventArgs e)
@@ -131,10 +150,12 @@ namespace Wurklist.Kanban
                         break;
                     case KanbanItemPositions.Doing:
                         button.taskItem.setItemPosition(KanbanItemPositions.ToDo);
+                        _dbcalls.UpdateTask(button.GetTaskItem());
                         MoveBtn(button, KanbanItemPositions.ToDo);
                         break;
                     case KanbanItemPositions.Done:
                         button.taskItem.setItemPosition(KanbanItemPositions.Doing);
+                        _dbcalls.UpdateTask(button.GetTaskItem());
                         MoveBtn(button, KanbanItemPositions.Doing);
                         break;
                 }
@@ -145,26 +166,23 @@ namespace Wurklist.Kanban
                 {
                     case KanbanItemPositions.ToDo:
                         button.taskItem.setItemPosition(KanbanItemPositions.Doing);
+                        _dbcalls.UpdateTask(button.GetTaskItem());
                         MoveBtn(button, KanbanItemPositions.Doing);
                         break;
                     case KanbanItemPositions.Doing:
                         button.taskItem.setItemPosition(KanbanItemPositions.Done);
+                        _dbcalls.UpdateTask(button.GetTaskItem());
                         MoveBtn(button, KanbanItemPositions.Done);
                         break;
                     case KanbanItemPositions.Done:
                         break;
                 }
             }
-            else
-            {
-
-            }
         }
 
         public async void GetAllProjectTasksFromUser()
         {
-            List<int> ids = _dbcalls.GetProjectIdsByUserId(1);
-            List<KanbanProject> allProjectsFromUser = new List<KanbanProject>();
+            List<int> ids = _dbcalls.GetProjectIdsByUserId(User.GetUserId());
 
             foreach (int id in ids)
             {
@@ -172,11 +190,11 @@ namespace Wurklist.Kanban
             }
         }
 
-        public void LoadProject()
+        public void LoadProject(int projectID)
         {
-            List<TaskItem> items = _dbcalls.GetKanbanItemsByProjectId(1);
+            List<CustomTask> items = _dbcalls.GetKanbanItemsByProjectId(projectID);
 
-            foreach(TaskItem item in items)
+            foreach(CustomTask item in items)
             {
                 AddBtn(item);
             }
@@ -185,18 +203,28 @@ namespace Wurklist.Kanban
         public async void ShowPopupAddTask(object sender, RoutedEventArgs e)
         {
             StackPanel stackpanel = new StackPanel();
+            TextBlock taskItemNameLabel = new TextBlock();
             TextBox taskItemName = new TextBox();
+            TextBlock taskItemDescriptionLabel = new TextBlock();
             TextBox taskItemDescription = new TextBox();
+            TextBlock taskItemDeadlineLabel = new TextBlock();
             DatePicker taskItemDeadline = new DatePicker();
+            TextBlock taskItemProjectIDLabel = new TextBlock();
             TextBox taskItemProjectID = new TextBox();
-            taskItemName.PlaceholderText = "Name";
-            taskItemDescription.PlaceholderText = "Description";
-            taskItemProjectID.PlaceholderText = "Project ID";
-            stackpanel.Children.Add(taskItemName);
-            stackpanel.Children.Add(taskItemDescription);
-            stackpanel.Children.Add(taskItemDeadline);
-            stackpanel.Children.Add(taskItemProjectID);
 
+            taskItemNameLabel.Text = taskItemName.PlaceholderText = "Name";
+            taskItemDescriptionLabel.Text = taskItemDescription.PlaceholderText = "Description";
+            taskItemDeadlineLabel.Text = "Deadline";
+            taskItemProjectIDLabel.Text = taskItemProjectID.PlaceholderText = "Project ID";
+
+            stackpanel.Children.Add(taskItemNameLabel);
+            stackpanel.Children.Add(taskItemName);
+            stackpanel.Children.Add(taskItemDescriptionLabel);
+            stackpanel.Children.Add(taskItemDescription);
+            stackpanel.Children.Add(taskItemDeadlineLabel);
+            stackpanel.Children.Add(taskItemDeadline);
+            stackpanel.Children.Add(taskItemProjectIDLabel);
+            stackpanel.Children.Add(taskItemProjectID);
 
             ContentDialog showKanbanItem = new ContentDialog
             {
@@ -210,7 +238,7 @@ namespace Wurklist.Kanban
 
             if (showKanbanItemResult == ContentDialogResult.Primary)
             {
-                if(taskItemName.Text.Equals("") || taskItemDescription.Text.Equals("") || taskItemDeadline.Date.ToString().Equals("") || Int32.Parse(taskItemProjectID.Text).Equals("") || DateTime.Now.ToString().Equals(""))
+                if(taskItemName.Text.Equals("") || taskItemDescription.Text.Equals("") || taskItemDeadline.Date.ToString().Equals("") || Int32.Parse(taskItemProjectID.Text).Equals(""))
                 {
                     ContentDialog warningMessage = new ContentDialog
                     {
@@ -222,9 +250,60 @@ namespace Wurklist.Kanban
                 }
                 else
                 {
-                    TaskItem newTaskItem = new TaskItem(taskItemName.Text, taskItemDescription.Text, taskItemDeadline.Date.DateTime.ToString(), Int32.Parse(taskItemProjectID.Text), 1, 1, DateTime.Now.ToString());
+                    TaskItem newTaskItem = new TaskItem(taskItemName.Text, taskItemDescription.Text, taskItemDeadline.Date.DateTime.ToString(), Int32.Parse(taskItemProjectID.Text), User.GetUserId(), User.GetUserId(), DateTime.Now.ToString());
                     _dbcalls.InsertKanbanTask(newTaskItem);
                     AddBtn(newTaskItem);
+                }
+            }
+        }
+
+        private async void AddProject_Click(object sender, RoutedEventArgs e)
+        {
+            StackPanel stackpanel = new StackPanel();
+            TextBlock taskItemNameLabel = new TextBlock();
+            TextBox taskItemName = new TextBox();
+            TextBlock taskItemDescriptionLabel = new TextBlock();
+            TextBox taskItemDescription = new TextBox();
+            TextBlock taskItemDeadlineLabel = new TextBlock();
+            DatePicker taskItemDeadline = new DatePicker();
+
+            taskItemNameLabel.Text = taskItemName.PlaceholderText = "Name";
+            taskItemDescriptionLabel.Text = taskItemDescription.PlaceholderText = "Description";
+            taskItemDeadlineLabel.Text = "Deadline";
+
+            stackpanel.Children.Add(taskItemNameLabel);
+            stackpanel.Children.Add(taskItemName);
+            stackpanel.Children.Add(taskItemDescriptionLabel);
+            stackpanel.Children.Add(taskItemDescription);
+            stackpanel.Children.Add(taskItemDeadlineLabel);
+            stackpanel.Children.Add(taskItemDeadline);
+
+            ContentDialog showKanbanItem = new ContentDialog
+            {
+                Title = "Add Project",
+                Content = stackpanel,
+                PrimaryButtonText = "Add",
+                CloseButtonText = "Close"
+            };
+
+            ContentDialogResult showKanbanItemResult = await showKanbanItem.ShowAsync();
+
+            if (showKanbanItemResult == ContentDialogResult.Primary)
+            {
+                if (taskItemName.Text.Equals("") || taskItemDescription.Text.Equals("") || taskItemDeadline.Date.ToString().Equals("") )
+                {
+                    ContentDialog warningMessage = new ContentDialog
+                    {
+                        Title = "Not all fields are filled in, closing..",
+                        CloseButtonText = "Ok"
+                    };
+
+                    ContentDialogResult warningMessageResult = await warningMessage.ShowAsync();
+                }
+                else
+                {
+                    KanbanProject newKanbanProject = new KanbanProject(taskItemName.Text, taskItemDescription.Text, User.GetUserId(), DateTime.Now.ToString(), taskItemDeadline.Date.DateTime.ToString());
+                    _dbcalls.InsertProject(newKanbanProject);
                 }
             }
         }

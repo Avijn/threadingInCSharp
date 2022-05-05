@@ -23,7 +23,7 @@ namespace Wurklist.Models
             Low
         }
 
-        public KanbanItemPositions Activity = KanbanItemPositions.ToDo; //a new kanban item is standard in the todo list
+        public KanbanItemPositions Activity;
         public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -32,7 +32,7 @@ namespace Wurklist.Models
         public int? ProjectId { get; set; }
         public int? UserId { get; set; }
         public int? LastEditedByUserId { get; set; }
-        public KanbanItemPriority itemPriority = KanbanItemPriority.Low; //a new kanban item is standard in a low priority
+        public KanbanItemPriority itemPriority;
 
         public TaskItem(int id, string name, string description, string deadline, int? projectId, int? userId, int? lastEditedByUserId, string itemCreated)
         {
@@ -44,6 +44,8 @@ namespace Wurklist.Models
             UserId = userId;
             LastEditedByUserId = lastEditedByUserId;
             Created = itemCreated;
+            Activity = KanbanItemPositions.ToDo; //a new kanban item is standard in the todo list
+            itemPriority = KanbanItemPriority.Low; //a new kanban item is standard in a low priority
         }
 
         public TaskItem(string name, string description, string deadline, int? projectId, int? userId, int? lastEditedByUserId, string itemCreated)
@@ -55,6 +57,8 @@ namespace Wurklist.Models
             UserId = userId;
             LastEditedByUserId = lastEditedByUserId;
             Created = itemCreated;
+            Activity = KanbanItemPositions.ToDo; //a new kanban item is standard in the todo list
+            itemPriority = KanbanItemPriority.Low; //a new kanban item is standard in a low priority
         }
 
         public KanbanItemPositions getItemPosition()
@@ -64,7 +68,7 @@ namespace Wurklist.Models
 
         public void setItemPosition(KanbanItemPositions newItemPosition)
         {
-            Activity = newItemPosition;
+            this.Activity = newItemPosition;
         }
 
         public KanbanItemPriority getItemPriority()
@@ -74,7 +78,7 @@ namespace Wurklist.Models
 
         public void setItemPriority(KanbanItemPriority newItemPriority)
         {
-            itemPriority = newItemPriority;
+            this.itemPriority = newItemPriority;
         }
     }
 }

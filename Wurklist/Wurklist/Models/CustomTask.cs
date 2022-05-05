@@ -1,28 +1,54 @@
 ﻿namespace Wurklist.Models
 {
-    public class CustomTask
+    public class CustomTask : TaskItem
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Activity { get; set; }
-        public string Deadline { get; set; }
-        public int? ProjectId { get;set; }
-        public int? UserId { get; set; }
-        public int? LastEditedByUserId { get; set; }
-        public int? Priority { get; set; }
-        public string ItemCreated { get; set; }
-
-        public CustomTask(string name, string description, string activity, string deadline, int? projectId, int? userId, int? priority, int? lastEditedByUserId, string itemCreated)
+        public CustomTask(
+            string name,
+            string description,
+            string activity,
+            string deadline,
+            int? projectId,
+            int? userId,
+            int? priority,
+            int? lastEditedByUserId,
+            string itemCreated
+            ) : base (name, description, deadline, projectId, userId, lastEditedByUserId, itemCreated)
         {
             Name = name;
             Description = description;
-            Activity = activity;
+            switch (activity)
+            {
+                case "ToDo":
+                    Activity = KanbanItemPositions.ToDo;
+                    break;
+                case "Doing":
+                    Activity = KanbanItemPositions.Doing;
+                    break;
+                case "Done":
+                    Activity = KanbanItemPositions.Done;
+                    break;
+                default:
+                    break;
+            }
             Deadline = deadline;
             ProjectId = projectId;
             UserId = userId;
-            Priority = priority;
+            switch (priority)
+            {
+                case 0:
+                    itemPriority = KanbanItemPriority.Low;
+                    break;
+                case 1:
+                    itemPriority = KanbanItemPriority.Medium;
+                    break;
+                case 2:
+                    itemPriority = KanbanItemPriority.High;
+                    break;
+                default:
+                    break;
+            }
             LastEditedByUserId = lastEditedByUserId;
-            ItemCreated = itemCreated;
+            Created = itemCreated;
         }
     }
 }

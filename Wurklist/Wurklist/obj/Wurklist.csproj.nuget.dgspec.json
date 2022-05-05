@@ -1,34 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "C:\\threadingInCSharp\\Wurklist\\Wurklist\\Wurklist.csproj": {}
+    "C:\\Users\\Robin\\OneDrive - NHL Stenden\\Documents\\GitHub\\threadingInCSharp\\Wurklist\\Wurklist\\Wurklist.csproj": {}
   },
   "projects": {
-    "C:\\threadingInCSharp\\Wurklist\\Wurklist\\Wurklist.csproj": {
+    "C:\\Users\\Robin\\OneDrive - NHL Stenden\\Documents\\GitHub\\threadingInCSharp\\Wurklist\\Wurklist\\Wurklist.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\threadingInCSharp\\Wurklist\\Wurklist\\Wurklist.csproj",
+        "projectUniqueName": "C:\\Users\\Robin\\OneDrive - NHL Stenden\\Documents\\GitHub\\threadingInCSharp\\Wurklist\\Wurklist\\Wurklist.csproj",
         "projectName": "Wurklist",
-        "projectPath": "C:\\threadingInCSharp\\Wurklist\\Wurklist\\Wurklist.csproj",
-        "packagesPath": "C:\\Users\\Arjan\\.nuget\\packages\\",
-        "outputPath": "C:\\threadingInCSharp\\Wurklist\\Wurklist\\obj\\",
+        "projectPath": "C:\\Users\\Robin\\OneDrive - NHL Stenden\\Documents\\GitHub\\threadingInCSharp\\Wurklist\\Wurklist\\Wurklist.csproj",
+        "packagesPath": "C:\\Users\\Robin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Robin\\OneDrive - NHL Stenden\\Documents\\GitHub\\threadingInCSharp\\Wurklist\\Wurklist\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
-          "F:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Arjan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Robin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "uap10.0.17134"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "http://nuget.nedfinity.com/nuget": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

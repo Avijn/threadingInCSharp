@@ -21,7 +21,7 @@ namespace Wurklist.Kanban
         public List<User> Contributors { get; set; }
         public string Created { get; set; }
         public string Deadline { get; set; }
-        public List<TaskItem> Items;
+        public List<CustomTask> Items;
 
         public KanbanProject(int Id, string projectName, string projectDescription, int projectCreatedByUserId, string projectCreated, string projectDeadline)
         {
@@ -47,11 +47,11 @@ namespace Wurklist.Kanban
             CreatedByUserId = projectCreatedByUserId;
             Created = projectCreated;
             Deadline = projectDeadline;
-            Items = new List<TaskItem>();
+            Items = new List<CustomTask>();
             Contributors = new List<User>();
         }
 
-        public List<TaskItem> getProjectItems()
+        public List<CustomTask> getProjectItems()
         {
             return Items;
         }
@@ -61,7 +61,7 @@ namespace Wurklist.Kanban
             Items = _dBCalls.GetKanbanItemsByProjectId(ID);
         }
 
-        public void addProjectItem(TaskItem newKanbanItem)
+        public void addProjectItem(CustomTask newKanbanItem)
         {
             Items.Add(newKanbanItem);
         }
@@ -72,12 +72,12 @@ namespace Wurklist.Kanban
             return true;
         }
 
-        public void deleteProjectItem(TaskItem kanbanItem)
+        public void deleteProjectItem(CustomTask kanbanItem)
         {
             Items.Remove(kanbanItem);
         }
 
-        public void setProjectItems(List<TaskItem> newKanbanItems)
+        public void setProjectItems(List<CustomTask> newKanbanItems)
         {
             Items = newKanbanItems;
         }
