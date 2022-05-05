@@ -78,9 +78,22 @@ namespace Wurklist
             _login.Register(user);
         }
 
-        private void GotoKanbanBoard(object sender, RoutedEventArgs e)
+        private async void GotoKanbanBoard(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Kanban.KanbanBoard), kanban);
+            if(User.GetUserId() != 0)
+            {
+                Frame.Navigate(typeof(Kanban.KanbanBoard), kanban);
+            }
+            else
+            {
+                ContentDialog warningMessage = new ContentDialog
+                {
+                    Title = "You must be logged in to access the kanban board.",
+                    CloseButtonText = "Ok"
+                };
+
+                ContentDialogResult warningMessageResult = await warningMessage.ShowAsync();
+            }
         }
     }
 }
