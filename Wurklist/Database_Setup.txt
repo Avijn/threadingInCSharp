@@ -1,0 +1,43 @@
+De applicatie maakt gebruik van een Database, hiervoor is gekozen voor mariadb.
+
+Hieronder volgen de create statements voor de database tables:
+
+CREATE DATABASE `test` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+CREATE TABLE `project` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(255) NOT NULL,
+  `Description` varchar(255) DEFAULT NULL,
+  `CreatedByUserId` int(11) NOT NULL,
+  `Created` varchar(45) NOT NULL,
+  `Deadline` varchar(45) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `projectgroup` (
+  `ProjectId` int(11) NOT NULL,
+  `UserId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `task` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(45) NOT NULL,
+  `Description` varchar(150) DEFAULT NULL,
+  `Activity` varchar(45) DEFAULT NULL,
+  `ProjectId` int(11) DEFAULT NULL,
+  `Priority` int(11) DEFAULT NULL,
+  `UserId` int(11) NOT NULL,
+  `Deadline` varchar(45) NOT NULL,
+  `LastEditedByUserId` int(11) DEFAULT NULL,
+  `ItemCreated` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `user` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(50) NOT NULL,
+  `Password` varchar(200) NOT NULL,
+  `Email` varchar(45) NOT NULL,
+  `DateOfBirth` varchar(45) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
