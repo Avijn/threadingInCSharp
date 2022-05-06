@@ -75,29 +75,6 @@ namespace Wurklist.DataBase
         }
 
         /// <summary>
-        /// Get all Reminders that are bound to a specific user id
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns> true </returns>   
-
-        //public void GetCustomRemindersUser(int id)
-        //{
-        //    try
-        //    {
-        //        string sql = @"SELECT * FROM Reminder WHERE UserId = @id";
-        //        cmd = new MySqlCommand(sql, conn);
-        //        cmd.Prepare();
-        //        cmd.Parameters.AddWithValue("@id", id);
-
-        //        var reslut = cmd.ExecuteReaderAsync();
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw e;
-        //    }
-        //}
-
-        /// <summary>
         /// Checks if the login and password are a valid combination
         /// </summary>
         /// <param name="user"></param>
@@ -143,7 +120,6 @@ namespace Wurklist.DataBase
                 List<int> projectIDs = new List<int>();
                 conn.Open();
                 //string sql = @"SELECT ProjectId FROM group WHERE UserId = @UserId";
-                //string sql = @"SELECT ProjectId FROM projectGroup WHERE UserId = @UserId";
                 string sql = @"SELECT ProjectId FROM projectgroup WHERE UserId = @UserId";
                 cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@UserId", id);

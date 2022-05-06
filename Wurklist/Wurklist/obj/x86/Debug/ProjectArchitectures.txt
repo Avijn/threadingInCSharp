@@ -1,1 +1,1 @@
-C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\Wurklist.csproj;x86
+C:\threadingInCSharp\Wurklist\Wurklist\Wurklist.csproj;x86
