@@ -1,0 +1,6 @@
+ReturnToHome, Return
+AddTask, Add Task
+AddProject, Add Project
+ToDoText, ToDo
+DoingText, Doing
+DoneText, Done

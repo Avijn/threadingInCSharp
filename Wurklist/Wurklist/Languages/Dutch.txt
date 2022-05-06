@@ -1,0 +1,6 @@
+ReturnToHome, Terug
+AddTask, Taak toevoegen
+AddProject, Project toevoegen
+ToDoText, Te doen
+DoingText, Bezig
+DoneText, Gedaan

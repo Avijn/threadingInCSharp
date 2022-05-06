@@ -34,7 +34,8 @@ namespace Wurklist.Kanban
     {
         private readonly DBCalls _dbcalls;
         private int UserId;
-        List<KanbanProject> allProjectsFromUser = new List<KanbanProject>();
+        private List<KanbanProject> allProjectsFromUser = new List<KanbanProject>();
+        private string languageDirectory = @"";
 
         public KanbanBoard()
         {
@@ -43,12 +44,7 @@ namespace Wurklist.Kanban
             SetAllProjectsFromUser();
             FillInComboBoxWithAllProjects();
             ReadFileAsyncIO();
-
-        }
-
-        public async Task SetAllProjectsFromUser()
-        {
-            allProjectsFromUser = await GetAllProjectTasksFromUser();
+            FillInLanguagesComboBox(GetAllLanguagesFiles());
         }
 
         public void SetUserId(int userid)
@@ -59,6 +55,11 @@ namespace Wurklist.Kanban
         public int GetUserId()
         {
             return UserId;
+        }
+
+        public async Task SetAllProjectsFromUser()
+        {
+            allProjectsFromUser = await GetAllProjectTasksFromUser();
         }
 
         public void AddBtn(TaskItem item)
@@ -377,30 +378,76 @@ namespace Wurklist.Kanban
 
         private async void ReadFileAsyncIO()
         {
-            StringBuilder contents = new StringBuilder();
-            string nextLine;
-            int lineCounter = 1;
+            string contents = "";
 
-            string englishDirectory = @"Wurklist\Language\English.txt";
-
-            using (StreamReader SourceReader = File.OpenText(englishDirectory))
+            if(languageDirectory.Equals(""))
             {
-                while ((nextLine = await SourceReader.ReadLineAsync()) != null)
+                languageDirectory = @"Languages\English.txt";
+            }
+
+            using (StreamReader SourceReader = File.OpenText(languageDirectory))
+            {
+                while ((contents = await SourceReader.ReadLineAsync()) != null)
                 {
-                    contents.AppendFormat("{0}. ", lineCounter);
-                    contents.Append(nextLine);
-                    contents.AppendLine();
-                    lineCounter++;
-                    if (lineCounter > 1)
+                    string[] contentsSplitted = contents.Split(',');
+
+                    object UIElement = FindName(contentsSplitted[0]);
+
+                    if(UIElement is Button)
                     {
-                        contents.AppendLine("Only first line is shown.");
-                        break;
+                        Button buttonUIElement = (Button)UIElement;
+                        buttonUIElement.Content = contentsSplitted[1];
+                    }
+                    else if(UIElement is TextBlock)
+                    {
+                        TextBlock buttonUIElement = (TextBlock)UIElement;
+                        buttonUIElement.Text = contentsSplitted[1];
+                    }
+                    else
+                    {
+                        
                     }
                 }
             }
-            ComboBoxItem tempComboboxitem = new ComboBoxItem();
-            tempComboboxitem.Content = contents.ToString();
-            ShowAllProjects.Items.Add(tempComboboxitem);
+        }
+
+        private List<string> GetAllLanguagesFiles()
+        {
+            List<string> allLanguages = new List<string>();
+            try
+            {
+                // Only get files that begin with the letter "c".
+                string[] dirs = Directory.GetFiles(@"Languages\", "*.txt");
+                foreach (string dir in dirs)
+                {
+                    //string[] dirSplitted = dir.Split("\\");
+                    //string dirLanguage = dirSplitted[1].Substring(0, dirSplitted[1].Length - 4);
+                    allLanguages.Add(dir);
+                }
+            }
+            catch (Exception e)
+            {
+                
+            }
+            return allLanguages;
+        }
+
+        private void FillInLanguagesComboBox(List<string> languagesFiles)
+        {
+            foreach(string languageFile in languagesFiles)
+            {
+                ComboBoxItem languageFileItem = new ComboBoxItem();
+                languageFileItem.Content = languageFile;
+                SelectLanguage.Items.Add(languageFileItem);
+            }
+            
+        }
+
+        private void SelectLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem selectedComboBoxItem = SelectLanguage.SelectedItem as ComboBoxItem; //*get value of combobox
+            languageDirectory = selectedComboBoxItem.Content.ToString();
+            Frame.Navigate(typeof(KanbanBoard));
         }
     }
 }

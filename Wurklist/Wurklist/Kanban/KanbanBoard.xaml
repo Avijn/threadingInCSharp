@@ -19,26 +19,27 @@
             <RowDefinition Height="65*"/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="ReturnToHome" Content="Return" Background="darkgray" Foreground="White" FontSize="20" Height="100" Width="100" Grid.Column="0" Click="ReturnToHome_Click" />
-        <Button x:Name="AddTask" Content="Add Task" Background="darkgray" Foreground="White" FontSize="20" Height="100" Width="100" Grid.Column="2" Margin="530,0,0,0" Click="ShowPopupAddTask" />
-        <Button x:Name="AddProject" Content="Add Project" Background="darkgray" Foreground="White" FontSize="20" Height="100" Width="125" Grid.Column="2" Margin="375,0,0,0" Click="AddProject_Click" />
-        <ComboBox x:Name="ShowAllProjects" Foreground="White" FontSize="20" Height="60" Width="200" Grid.Column="2" Margin="150,20,0,0" SelectedValuePath="Tag" SelectionChanged="ShowAllProjects_SelectionChanged" />
+        <Button x:Name="ReturnToHome" Background="darkgray" Foreground="White" FontSize="20" Height="100" Width="200" Grid.Column="0" Click="ReturnToHome_Click" />
+        <Button x:Name="AddTask" Background="darkgray" Foreground="White" FontSize="20" Height="100" Width="200" Grid.Column="2" Margin="435,0,0,0" Click="ShowPopupAddTask" />
+        <Button x:Name="AddProject" Background="darkgray" Foreground="White" FontSize="20" Height="100" Width="200" Grid.Column="2" Margin="225,0,0,0" Click="AddProject_Click" />
+        <ComboBox x:Name="ShowAllProjects" Foreground="White" FontSize="20" Height="60" Width="200" Grid.Column="2" Margin="0,20,0,0" SelectedValuePath="Tag" SelectionChanged="ShowAllProjects_SelectionChanged" />
+        <ComboBox x:Name="SelectLanguage" Foreground="White" FontSize="20" Height="60" Width="200" Grid.Column="0" Margin="300,20,0,0" SelectedValuePath="Tag" SelectionChanged="SelectLanguage_SelectionChanged"  />
 
         <Grid x:Name="ToDo" Grid.Column="0" Grid.Row="1" BorderBrush="White" BorderThickness="2">
-            <StackPanel x:Name="ToDoText" Grid.Row="1" Margin="0,25,0,10" HorizontalAlignment="Center">
-                <TextBlock Text="ToDo" FontSize="50" HorizontalAlignment="center"></TextBlock>
+            <StackPanel x:Name="ToDoPanel" Grid.Row="1" Margin="0,25,0,10" HorizontalAlignment="Center">
+                <TextBlock x:Name="ToDoText" FontSize="50" HorizontalAlignment="center"></TextBlock>
                 <StackPanel x:Name="ToDoBlock" HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto" />
             </StackPanel>
         </Grid>
         <Grid x:Name="Doing" Grid.Column="1" Grid.Row="1" BorderBrush="White" BorderThickness="2">
-            <StackPanel x:Name="DoingText" HorizontalAlignment="Center" Margin="0,25,0,10">
-                <TextBlock Text="Doing" HorizontalAlignment="center" FontSize="50"></TextBlock>
+            <StackPanel x:Name="DoingPanel" HorizontalAlignment="Center" Margin="0,25,0,10">
+                <TextBlock x:Name="DoingText" HorizontalAlignment="center" FontSize="50"></TextBlock>
                 <StackPanel x:Name="DoingBlock" HorizontalAlignment="Center" />
             </StackPanel>
         </Grid>
         <Grid x:Name="Done" Grid.Column="2" Grid.Row="1" BorderBrush="White" BorderThickness="2">
-            <StackPanel x:Name="DoneText" HorizontalAlignment="Center" Margin="0,25,0,10">
-                <TextBlock Text="Done" HorizontalAlignment="center" FontSize="50"></TextBlock>
+            <StackPanel x:Name="DonePanel" HorizontalAlignment="Center" Margin="0,25,0,10">
+                <TextBlock x:Name="DoneText" HorizontalAlignment="center" FontSize="50"></TextBlock>
                 <StackPanel x:Name="DoneBlock" HorizontalAlignment="Center" />
             </StackPanel>
         </Grid>

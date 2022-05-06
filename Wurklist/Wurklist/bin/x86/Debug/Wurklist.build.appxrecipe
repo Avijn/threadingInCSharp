@@ -121,6 +121,15 @@
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\Languages\Deutsch.txt">
+      <PackagePath>Languages\Deutsch.txt</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\Languages\Dutch.txt">
+      <PackagePath>Languages\Dutch.txt</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\Languages\English.txt">
+      <PackagePath>Languages\English.txt</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>

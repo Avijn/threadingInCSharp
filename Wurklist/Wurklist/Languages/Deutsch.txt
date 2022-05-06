@@ -1,0 +1,6 @@
+ReturnToHome, Zurück
+AddTask, Aufgabe hinzufügen
+AddProject, Projekt hinzufügen
+ToDoText, machen
+DoingText, in Bearbeitung
+DoneText, fertig
