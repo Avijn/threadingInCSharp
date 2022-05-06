@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-05-05T17:13:41.210</Modified>
+      <Modified>2022-05-06T09:38:40.445</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\Wurklist.exe">
       <PackagePath>entrypoint\Wurklist.exe</PackagePath>
-      <Modified>2022-05-05T17:13:39.014</Modified>
+      <Modified>2022-05-06T09:38:39.566</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Robin\.nuget\packages\bouncycastle.netcore\1.8.5\lib\netstandard2.0\BouncyCastle.Crypto.dll">
       <PackagePath>BouncyCastle.Crypto.dll</PackagePath>
@@ -166,19 +166,19 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\Wurklist.xr.xml">
       <PackagePath>Wurklist.xr.xml</PackagePath>
-      <Modified>2022-05-05T12:36:13.427</Modified>
+      <Modified>2022-05-05T20:56:36.923</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2022-05-05T16:58:45.282</Modified>
+      <Modified>2022-05-06T09:38:39.386</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\Kanban\KanbanBoard.xbf">
       <PackagePath>Kanban\KanbanBoard.xbf</PackagePath>
-      <Modified>2022-05-05T16:58:45.283</Modified>
+      <Modified>2022-05-06T09:38:39.387</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2022-05-05T16:58:45.283</Modified>
+      <Modified>2022-05-06T09:38:39.387</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.19041.0\\redist\Debug\x86\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -194,11 +194,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2022-05-05T11:40:36.306</Modified>
+      <Modified>2022-05-05T21:53:45.351</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\bin\x86\Debug\Core\Wurklist.exe">
       <PackagePath>Wurklist.exe</PackagePath>
-      <Modified>2022-05-05T17:13:41.205</Modified>
+      <Modified>2022-05-06T09:38:40.442</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

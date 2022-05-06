@@ -19,11 +19,6 @@ namespace Wurklist.UI
         public TaskItem taskItem { get; set; }
         public ContentDialog contentDialog { get; set; }
 
-        public CustomButton()
-        {
-            
-        }
-
         public TaskItem GetTaskItem()
         {
             return taskItem;

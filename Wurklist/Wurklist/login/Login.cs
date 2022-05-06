@@ -28,21 +28,16 @@ namespace Wurklist.login
                 user.Password = EncryptPassword(user.Password);
                 int userId = _dbcalls.CheckLogin(user);
                 user.SetUserId(userId);
+                ////test
+                //List<int> ids = _dbcalls.GetProjectIdsByUserId(userId);
+                //List<KanbanProject> allProjectsFromUser = new List<KanbanProject>(); 
 
-
-                //test
-                List<int> ids = _dbcalls.GetProjectIdsByUserId(userId);
-                List<KanbanProject> allProjectsFromUser = new List<KanbanProject>(); 
-
-                foreach(int id in ids)
-                {
-                    allProjectsFromUser.Add(await _dbcalls.GetProjectsByProjectId(id));
-                }
-                //
-
+                //foreach(int id in ids)
+                //{
+                //    allProjectsFromUser.Add(await _dbcalls.GetProjectsByProjectId(id));
+                //}
+                ////
                 var userid = User.GetUserId();
-
-
                 return userId;
             }
             catch(Exception)

@@ -17,6 +17,10 @@ using Wurklist.Models;
 using Wurklist.UI;
 using Wurklist.General;
 using static Wurklist.Models.TaskItem;
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Wurklist.Kanban
 {
@@ -33,16 +37,15 @@ namespace Wurklist.Kanban
         {
             this.InitializeComponent();
             _dbcalls = new DBCalls();
-            GetAllProjectTasksFromUser();
-            
+            SetAllProjectsFromUser();
+            FillInComboBoxWithAllProjects();
 
-            foreach (KanbanProject project in allProjectsFromUser)
-            {
-                ShowAllProjects.Items.Add(project.Name);
-                LoadProject(project.ID);
-            }
 
-            
+        }
+
+        public async Task SetAllProjectsFromUser()
+        {
+            allProjectsFromUser = await GetAllProjectTasksFromUser();
         }
 
         public void SetUserId(int userid)
@@ -67,7 +70,7 @@ namespace Wurklist.Kanban
             button.Width = 400;
             button.Height = 100;
             button.Margin = new Thickness(10);
-            
+
             switch (button.GetTaskItem().getItemPosition())
             {
                 case KanbanItemPositions.ToDo:
@@ -110,24 +113,6 @@ namespace Wurklist.Kanban
             }
         }
 
-        public async void AddProjects()
-        {
-            List<int> ids = _dbcalls.GetProjectIdsByUserId(UserId);
-            List<KanbanProject> projects = new List<KanbanProject>();
-            foreach (int id in ids) {
-                projects.Add(await _dbcalls.GetProjectsByProjectId(id));
-            }
-
-            foreach (KanbanProject project in projects)
-            {
-                CustomButton button = new CustomButton();
-                button.Content = project.Name;
-                button.Width = 400;
-                button.Height = 100;
-                ToDoBlock.Children.Add(button);
-            }
-        }
-
         private async void ShowKanbanItem_Click(object sender, RoutedEventArgs e)
         {
             CustomButton button = (CustomButton)sender;
@@ -149,12 +134,12 @@ namespace Wurklist.Kanban
             showKanbanItem.Content = button.taskItem.Description;
             showKanbanItem.PrimaryButtonText = "<- Move";
             showKanbanItem.SecondaryButtonText = "Move ->";
-            
+
             ContentDialogResult result = await showKanbanItem.ShowAsync();
 
             if (result == ContentDialogResult.Primary)
             {
-                switch(button.taskItem.getItemPosition())
+                switch (button.taskItem.getItemPosition())
                 {
                     case KanbanItemPositions.ToDo:
                         break;
@@ -189,26 +174,79 @@ namespace Wurklist.Kanban
         private void DeleteTaskItem_Click(object sender, RoutedEventArgs e)
         {
             CustomButton button = (CustomButton)sender;
-            _dbcalls.DeleteTask(button.GetTaskItem());
+            IAsyncAction asyncAction = Windows.System.Threading.ThreadPool.RunAsync((workItem) =>
+            {
+                if (workItem.Status == AsyncStatus.Canceled)
+                {
+                    return;
+                }
+
+                _dbcalls.DeleteTask(button.GetTaskItem());
+            });
+
+            asyncAction.Completed = new AsyncActionCompletedHandler((IAsyncAction asyncInfo, AsyncStatus asyncStatus) =>
+            {
+                if (asyncStatus == AsyncStatus.Canceled)
+                {
+                    return;
+                }
+
+            });
+
             Frame.Navigate(typeof(KanbanBoard));
             button.contentDialog.Hide();
         }
 
-        public async void GetAllProjectTasksFromUser()
+        public async Task<List<KanbanProject>> GetAllProjectTasksFromUser()
         {
             List<int> ids = _dbcalls.GetProjectIdsByUserId(User.GetUserId());
+            List <KanbanProject> projects = new List<KanbanProject>();
 
             foreach (int id in ids)
             {
-                allProjectsFromUser.Add(await _dbcalls.GetProjectsByProjectId(id));
+                projects.Add(await _dbcalls.GetProjectsByProjectId(id));
             }
+
+            return projects;
+        }
+
+        public void FillInComboBoxWithAllProjects()
+        {
+            IAsyncAction asyncAction = Windows.System.Threading.ThreadPool.RunAsync((workItem) =>
+            {
+                if (workItem.Status == AsyncStatus.Canceled)
+                {
+                    return;
+                }
+
+                CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => 
+                { 
+                    // UI update code
+                    foreach (KanbanProject project in allProjectsFromUser)
+                    {
+                        ComboBoxItem comboBoxItem = new ComboBoxItem();
+                        comboBoxItem.Content = project.Name;
+                        comboBoxItem.Tag = project.ID;
+                        ShowAllProjects.Items.Add(comboBoxItem);
+                    }
+                });
+            });
+
+            asyncAction.Completed = new AsyncActionCompletedHandler((IAsyncAction asyncInfo, AsyncStatus asyncStatus) =>
+            {
+                if (asyncStatus == AsyncStatus.Canceled)
+                {
+                    return;
+                }
+
+            });
         }
 
         public void LoadProject(int projectID)
         {
             List<CustomTask> items = _dbcalls.GetKanbanItemsByProjectId(projectID);
 
-            foreach(CustomTask item in items)
+            foreach (CustomTask item in items)
             {
                 AddBtn(item);
             }
@@ -252,7 +290,7 @@ namespace Wurklist.Kanban
 
             if (showKanbanItemResult == ContentDialogResult.Primary)
             {
-                if(taskItemName.Text.Equals("") || taskItemDescription.Text.Equals("") || taskItemDeadline.Date.ToString().Equals("") || Int32.Parse(taskItemProjectID.Text).Equals(""))
+                if (taskItemName.Text.Equals("") || taskItemDescription.Text.Equals("") || taskItemDeadline.Date.ToString().Equals("") || Int32.Parse(taskItemProjectID.Text).Equals(""))
                 {
                     ContentDialog warningMessage = new ContentDialog
                     {
@@ -267,6 +305,7 @@ namespace Wurklist.Kanban
                     TaskItem newTaskItem = new TaskItem(taskItemName.Text, taskItemDescription.Text, taskItemDeadline.Date.DateTime.ToString(), Int32.Parse(taskItemProjectID.Text), User.GetUserId(), User.GetUserId(), DateTime.Now.ToString());
                     _dbcalls.InsertKanbanTask(newTaskItem);
                     AddBtn(newTaskItem);
+                    Frame.Navigate(typeof(KanbanBoard));
                 }
             }
         }
@@ -304,7 +343,7 @@ namespace Wurklist.Kanban
 
             if (showKanbanItemResult == ContentDialogResult.Primary)
             {
-                if (taskItemName.Text.Equals("") || taskItemDescription.Text.Equals("") || taskItemDeadline.Date.ToString().Equals("") )
+                if (taskItemName.Text.Equals("") || taskItemDescription.Text.Equals("") || taskItemDeadline.Date.ToString().Equals(""))
                 {
                     ContentDialog warningMessage = new ContentDialog
                     {
@@ -325,6 +364,12 @@ namespace Wurklist.Kanban
         private void ReturnToHome_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainPage));
+        }
+
+        private void ShowAllProjects_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem selectedComboBoxItem = ShowAllProjects.SelectedItem as ComboBoxItem; //*get value of combobox
+            LoadProject((int)selectedComboBoxItem.Tag);
         }
     }
 }
