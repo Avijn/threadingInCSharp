@@ -21,6 +21,9 @@ using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Text;
+using Windows.Storage.Pickers;
+using Windows.Storage;
 
 namespace Wurklist.Kanban
 {
@@ -39,7 +42,7 @@ namespace Wurklist.Kanban
             _dbcalls = new DBCalls();
             SetAllProjectsFromUser();
             FillInComboBoxWithAllProjects();
-
+            ReadFileAsyncIO();
 
         }
 
@@ -370,6 +373,34 @@ namespace Wurklist.Kanban
         {
             ComboBoxItem selectedComboBoxItem = ShowAllProjects.SelectedItem as ComboBoxItem; //*get value of combobox
             LoadProject((int)selectedComboBoxItem.Tag);
+        }
+
+        private async void ReadFileAsyncIO()
+        {
+            StringBuilder contents = new StringBuilder();
+            string nextLine;
+            int lineCounter = 1;
+
+            string englishDirectory = @"Wurklist\Language\English.txt";
+
+            using (StreamReader SourceReader = File.OpenText(englishDirectory))
+            {
+                while ((nextLine = await SourceReader.ReadLineAsync()) != null)
+                {
+                    contents.AppendFormat("{0}. ", lineCounter);
+                    contents.Append(nextLine);
+                    contents.AppendLine();
+                    lineCounter++;
+                    if (lineCounter > 1)
+                    {
+                        contents.AppendLine("Only first line is shown.");
+                        break;
+                    }
+                }
+            }
+            ComboBoxItem tempComboboxitem = new ComboBoxItem();
+            tempComboboxitem.Content = contents.ToString();
+            ShowAllProjects.Items.Add(tempComboboxitem);
         }
     }
 }

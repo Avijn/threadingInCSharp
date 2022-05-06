@@ -136,4 +136,3 @@ C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklis
 C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\FxResources.System.Configuration.ConfigurationManager.SR.resw
 C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\FxResources.System.Security.Cryptography.ProtectedData.SR.resw
 C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\FxResources.System.Security.Permissions.SR.resw
-C:\Users\Robin\OneDrive - NHL Stenden\Documents\GitHub\threadingInCSharp\Wurklist\Wurklist\obj\x86\Debug\Wurklist.csprojAssemblyReference.cache
