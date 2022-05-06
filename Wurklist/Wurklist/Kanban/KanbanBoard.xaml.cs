@@ -1,17 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 using Wurklist.DataBase;
 using Wurklist.Models;
 using Wurklist.UI;
@@ -19,31 +11,28 @@ using Wurklist.General;
 using static Wurklist.Models.TaskItem;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Text;
-using Windows.Storage.Pickers;
-using Windows.Storage;
 
 namespace Wurklist.Kanban
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// A kanbanboard page that has multiple threading methods and connectivity with a database
     /// </summary>
     public sealed partial class KanbanBoard : Page
     {
-        private readonly DBCalls _dbcalls;
-        private int UserId;
-        private List<KanbanProject> allProjectsFromUser = new List<KanbanProject>();
-        private string languageDirectory = @"";
+        private readonly DBCalls _dbcalls; //Database calls
+        private int UserId { get; set; } //User id from database
+        private List<KanbanProject> allProjectsFromUser = new List<KanbanProject>(); //List of kanban project from user
+        private string languageDirectory = @""; //Directory of the language file of the page
 
         public KanbanBoard()
         {
+            //Initializing kanbanboard
             this.InitializeComponent();
             _dbcalls = new DBCalls();
             SetAllProjectsFromUser();
-            FillInComboBoxWithAllProjects();
-            ReadFileAsyncIO();
+            FillInComboBoxWithAllProjects(allProjectsFromUser);
+            ReadFileAsyncIO(); 
             FillInLanguagesComboBox(GetAllLanguagesFiles());
         }
 
@@ -57,11 +46,21 @@ namespace Wurklist.Kanban
             return UserId;
         }
 
+        /// <summary>
+        /// Sets all project from user that is logged in
+        /// </summary>
+        /// <param></param>
+        /// <returns> Task </returns>
         public async Task SetAllProjectsFromUser()
         {
-            allProjectsFromUser = await GetAllProjectTasksFromUser();
+            allProjectsFromUser = await GetAllProjectTasksFromUser(User.GetUserId());
         }
 
+        /// <summary>
+        /// Adds a button to the todo, doing or done list
+        /// </summary>
+        /// <param TaskItem="item"></param>
+        /// <returns> void </returns>
         public void AddBtn(TaskItem item)
         {
             CustomButton button = new CustomButton();
@@ -91,6 +90,11 @@ namespace Wurklist.Kanban
             }
         }
 
+        /// <summary>
+        /// Moves the button to a different todo, doing, done block
+        /// </summary>
+        /// <param CustomButton="btn" KanbanItemPositions="positions"></param>
+        /// <returns> void </returns>
         public void MoveBtn(CustomButton btn, KanbanItemPositions positions)
         {
             btn.taskItem.setItemPosition(positions);
@@ -117,6 +121,11 @@ namespace Wurklist.Kanban
             }
         }
 
+        /// <summary>
+        /// Shows the kanban item with additional values when clicked on
+        /// </summary>
+        /// <param></param>
+        /// <returns> void </returns>
         private async void ShowKanbanItem_Click(object sender, RoutedEventArgs e)
         {
             CustomButton button = (CustomButton)sender;
@@ -175,6 +184,11 @@ namespace Wurklist.Kanban
             }
         }
 
+        /// <summary>
+        /// Deletes the kanban item when the delete button in the kanban item is clicked on
+        /// </summary>
+        /// <param></param>
+        /// <returns> void </returns>
         private void DeleteTaskItem_Click(object sender, RoutedEventArgs e)
         {
             CustomButton button = (CustomButton)sender;
@@ -201,9 +215,14 @@ namespace Wurklist.Kanban
             button.contentDialog.Hide();
         }
 
-        public async Task<List<KanbanProject>> GetAllProjectTasksFromUser()
+        /// <summary>
+        /// Gets all project tasks from user
+        /// </summary>
+        /// <param int="userId"></param>
+        /// <returns> Task<List<KanbanProject>> </returns>
+        public async Task<List<KanbanProject>> GetAllProjectTasksFromUser(int userId)
         {
-            List<int> ids = _dbcalls.GetProjectIdsByUserId(User.GetUserId());
+            List<int> ids = _dbcalls.GetProjectIdsByUserId(userId);
             List <KanbanProject> projects = new List<KanbanProject>();
 
             foreach (int id in ids)
@@ -214,7 +233,12 @@ namespace Wurklist.Kanban
             return projects;
         }
 
-        public void FillInComboBoxWithAllProjects()
+        /// <summary>
+        /// Fill in combobox with all the projects from user
+        /// </summary>
+        /// <param List<KanbanProject>="kanbanProjects"></param>
+        /// <returns> void </returns>
+        public void FillInComboBoxWithAllProjects(List<KanbanProject> kanbanProjects)
         {
             IAsyncAction asyncAction = Windows.System.Threading.ThreadPool.RunAsync((workItem) =>
             {
@@ -226,7 +250,7 @@ namespace Wurklist.Kanban
                 CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => 
                 { 
                     // UI update code
-                    foreach (KanbanProject project in allProjectsFromUser)
+                    foreach (KanbanProject project in kanbanProjects)
                     {
                         ComboBoxItem comboBoxItem = new ComboBoxItem();
                         comboBoxItem.Content = project.Name;
@@ -246,6 +270,11 @@ namespace Wurklist.Kanban
             });
         }
 
+        /// <summary>
+        /// Adds all kanban items in the kanbanboard with an project id
+        /// </summary>
+        /// <param int="projectID"></param>
+        /// <returns> void </returns>
         public void LoadProject(int projectID)
         {
             List<CustomTask> items = _dbcalls.GetKanbanItemsByProjectId(projectID);
@@ -256,6 +285,11 @@ namespace Wurklist.Kanban
             }
         }
 
+        /// <summary>
+        /// Content dialog popup for adding a task to the project
+        /// </summary>
+        /// <param></param>
+        /// <returns> void </returns>
         public async void ShowPopupAddTask(object sender, RoutedEventArgs e)
         {
             StackPanel stackpanel = new StackPanel();
@@ -314,6 +348,11 @@ namespace Wurklist.Kanban
             }
         }
 
+        /// <summary>
+        /// Content dialog popup for adding a project to the user
+        /// </summary>
+        /// <param></param>
+        /// <returns> void </returns>
         private async void AddProject_Click(object sender, RoutedEventArgs e)
         {
             StackPanel stackpanel = new StackPanel();
@@ -365,17 +404,32 @@ namespace Wurklist.Kanban
             }
         }
 
+        /// <summary>
+        /// Returns the user to the Mainpage when clicked on returntohome button
+        /// </summary>
+        /// <param></param>
+        /// <returns> void </returns>
         private void ReturnToHome_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainPage));
         }
 
+        /// <summary>
+        /// Loads in kanban items from project when changing the project in the combobox ShowAllProjects
+        /// </summary>
+        /// <param></param>
+        /// <returns> void </returns>
         private void ShowAllProjects_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem selectedComboBoxItem = ShowAllProjects.SelectedItem as ComboBoxItem; //*get value of combobox
             LoadProject((int)selectedComboBoxItem.Tag);
         }
 
+        /// <summary>
+        /// Reads the language files in async IO and adds the translated texts to the UIElements
+        /// </summary>
+        /// <param></param>
+        /// <returns> void </returns>
         private async void ReadFileAsyncIO()
         {
             string contents = "";
@@ -411,12 +465,16 @@ namespace Wurklist.Kanban
             }
         }
 
+        /// <summary>
+        /// Gets all language files (.txt) that are in the directory 'Wurklist\Languages\..'
+        /// </summary>
+        /// <param></param>
+        /// <returns> List<string> </returns>
         private List<string> GetAllLanguagesFiles()
         {
             List<string> allLanguages = new List<string>();
             try
             {
-                // Only get files that begin with the letter "c".
                 string[] dirs = Directory.GetFiles(@"Languages\", "*.txt");
                 foreach (string dir in dirs)
                 {
@@ -432,6 +490,11 @@ namespace Wurklist.Kanban
             return allLanguages;
         }
 
+        /// <summary>
+        /// Fills in the combobox SelectLanguage with all the possible languages
+        /// </summary>
+        /// <param List<string>="languagesFiles"></param>
+        /// <returns> void </returns>
         private void FillInLanguagesComboBox(List<string> languagesFiles)
         {
             foreach(string languageFile in languagesFiles)
@@ -443,11 +506,16 @@ namespace Wurklist.Kanban
             
         }
 
+        /// <summary>
+        /// Loads in the language file that is selected in the combobox SelectedLanguage
+        /// </summary>
+        /// <param></param>
+        /// <returns> void </returns>
         private void SelectLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem selectedComboBoxItem = SelectLanguage.SelectedItem as ComboBoxItem; //*get value of combobox
             languageDirectory = selectedComboBoxItem.Content.ToString();
-            Frame.Navigate(typeof(KanbanBoard));
+            ReadFileAsyncIO();
         }
     }
 }
