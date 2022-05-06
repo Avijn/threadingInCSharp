@@ -98,7 +98,25 @@ namespace Wurklist.Kanban
         public void MoveBtn(CustomButton btn, KanbanItemPositions positions)
         {
             btn.taskItem.setItemPosition(positions);
-            _dbcalls.UpdateTask(btn.taskItem);
+            IAsyncAction asyncAction = Windows.System.Threading.ThreadPool.RunAsync((workItem) =>
+            {
+                if (workItem.Status == AsyncStatus.Canceled)
+                {
+                    return;
+                }
+
+                _dbcalls.UpdateTask(btn.taskItem);
+            });
+
+            asyncAction.Completed = new AsyncActionCompletedHandler((IAsyncAction asyncInfo, AsyncStatus asyncStatus) =>
+            {
+                if (asyncStatus == AsyncStatus.Canceled)
+                {
+                    return;
+                }
+
+            });
+            
             switch (positions)
             {
                 case KanbanItemPositions.ToDo:
@@ -278,6 +296,9 @@ namespace Wurklist.Kanban
         public void LoadProject(int projectID)
         {
             List<CustomTask> items = _dbcalls.GetKanbanItemsByProjectId(projectID);
+            ToDoBlock.Children.Clear();
+            DoingBlock.Children.Clear();
+            DoneBlock.Children.Clear();
 
             foreach (CustomTask item in items)
             {
@@ -341,7 +362,25 @@ namespace Wurklist.Kanban
                 else
                 {
                     TaskItem newTaskItem = new TaskItem(taskItemName.Text, taskItemDescription.Text, taskItemDeadline.Date.DateTime.ToString(), Int32.Parse(taskItemProjectID.Text), User.GetUserId(), User.GetUserId(), DateTime.Now.ToString());
-                    _dbcalls.InsertKanbanTask(newTaskItem);
+                    IAsyncAction asyncAction = Windows.System.Threading.ThreadPool.RunAsync((workItem) =>
+                    {
+                        if (workItem.Status == AsyncStatus.Canceled)
+                        {
+                            return;
+                        }
+
+                        _dbcalls.InsertKanbanTask(newTaskItem);
+                    });
+
+                    asyncAction.Completed = new AsyncActionCompletedHandler((IAsyncAction asyncInfo, AsyncStatus asyncStatus) =>
+                    {
+                        if (asyncStatus == AsyncStatus.Canceled)
+                        {
+                            return;
+                        }
+
+                    });
+
                     AddBtn(newTaskItem);
                     Frame.Navigate(typeof(KanbanBoard));
                 }
